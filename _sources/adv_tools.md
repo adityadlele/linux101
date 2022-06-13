@@ -1,8 +1,3 @@
-# Here's my sample title
+# Advanced tools
+Tools to be used for more advanced usage
 
-This is some sample text.
-
-(section-label)=
-## Here's my first section
-
-Here is a [reference to the intro](intro.md). Here is a reference to [](section-label).

@@ -34,4 +34,3 @@ module load intel/2021.1.2 intel-mpi/intel/2021.1.1
 
 srun vasp_std
 ```
-# Visualization Tools
