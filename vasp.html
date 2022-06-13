@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Here’s my sample title &#8212; Linux101</title>
+    <title>VASP &#8212; Linux101</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -141,7 +141,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Here’s my sample title
+     VASP
     </a>
    </li>
   </ul>
@@ -279,8 +279,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#here-s-my-first-section">
-   Here’s my first section
+  <a class="reference internal nav-link" href="#reiterating-some-basics">
+   Reiterating some basics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-vasp-on-della">
+   Running VASP on Della
   </a>
  </li>
 </ul>
@@ -292,7 +297,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Here’s my sample title</h1>
+                <h1>VASP</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -303,8 +308,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#here-s-my-first-section">
-   Here’s my first section
+  <a class="reference internal nav-link" href="#reiterating-some-basics">
+   Reiterating some basics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-vasp-on-della">
+   Running VASP on Della
   </a>
  </li>
 </ul>
@@ -317,12 +327,42 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="section" id="here-s-my-sample-title">
-<h1>Here’s my sample title<a class="headerlink" href="#here-s-my-sample-title" title="Permalink to this headline">¶</a></h1>
-<p>This is some sample text.</p>
-<div class="section" id="here-s-my-first-section">
-<span id="section-label"></span><h2>Here’s my first section<a class="headerlink" href="#here-s-my-first-section" title="Permalink to this headline">¶</a></h2>
-<p>Here is a <a class="reference internal" href="intro.html"><span class="doc std std-doc">reference to the intro</span></a>. Here is a reference to <a class="reference internal" href="#section-label"><span class="std std-ref">Here’s my first section</span></a>.</p>
+  <div class="section" id="vasp">
+<h1>VASP<a class="headerlink" href="#vasp" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="reiterating-some-basics">
+<h2>Reiterating some basics<a class="headerlink" href="#reiterating-some-basics" title="Permalink to this headline">¶</a></h2>
+<p>Files used to run VASP calculations</p>
+<ul class="simple">
+<li><p>INCAR: This file describes the input parameters required for different calculations (For example: A molecule will have different parameters than a crystal)</p></li>
+<li><p>KPOINTS: Description of receprocal space</p></li>
+<li><p>POSCAR: Define the geometry of your system</p></li>
+<li><p>POTCAR: Concatenated pseudopotentials for elements of your system</p></li>
+</ul>
+</div>
+<div class="section" id="running-vasp-on-della">
+<h2>Running VASP on Della<a class="headerlink" href="#running-vasp-on-della" title="Permalink to this headline">¶</a></h2>
+<p>We will try to use a VASP executable that has been already compiled</p>
+<p>Use the following job submission script to submit a VASP job</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=vasp          # create a short name for your job</span>
+<span class="c1">#SBATCH --nodes=1                # node count</span>
+<span class="c1">#SBATCH --ntasks-per-node=8      # total number of tasks per node</span>
+<span class="c1">#SBATCH --cpus-per-task=2        # cpu-cores per task (&gt;1 if multi-threaded tasks)</span>
+<span class="c1">#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)</span>
+<span class="c1">#SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)</span>
+<span class="c1">#SBATCH --mail-type=begin        # send email when job begins</span>
+<span class="c1">#SBATCH --mail-type=end          # send email when job ends</span>
+<span class="c1">#SBATCH --mail-user=&lt;YourNetID&gt;@princeton.edu</span>
+
+<span class="nb">export</span> <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/al9001/software/vasp.6.2.1/bin/
+
+module purge
+module load intel/2021.1.2 intel-mpi/intel/2021.1.1
+
+srun vasp_std
+</pre></div>
+</div>
 </div>
 </div>
 
