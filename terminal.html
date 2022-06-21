@@ -350,36 +350,12 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-basics">
-   The basics
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
@@ -391,19 +367,6 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-basics">
-   The basics
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -413,8 +376,7 @@ title="Print to PDF"
                 
   <div class="section" id="how-to-use-the-computing-cluster">
 <h1>How to use the computing cluster<a class="headerlink" href="#how-to-use-the-computing-cluster" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="the-basics">
-<h2>The basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
+<p>** 1. Getting started **</p>
 <p>You can use the research computing website for a <a class="reference external" href="https://researchcomputing.princeton.edu/get-started/guide-princeton-clusters">comprehensive guide</a></p>
 <p>or</p>
 <p>A shorter version:</p>
@@ -429,6 +391,33 @@ Once you have an account, you can browse to <a class="reference external" href="
 <ul class="simple">
 <li><p>The computer clusters runs Linux. So you will need learn basics of <a class="reference external" href="https://github.com/gabeclass/introcmdline">linux</a>.</p></li>
 </ul>
+<p>**2. File system **</p>
+<p>There are two types of file storages available for all the clusters. For adroit</p>
+<ol class="simple">
+<li><p>/home/<YourNetID> <strong>(You can store imporatant results here!)</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>For - source code and executables</p></li>
+<li><p>Details - This folder is small and it is intended for storing source code, executables, Conda environments, R or Julia packages and small data sets.</p></li>
+</ul>
+<ol class="simple">
+<li><p>/scratch/network/<YourNetID> <strong>(You will run your jobs here!)</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>For - job output, intermediate results</p></li>
+<li><p>Details - This folder is a fast, parallel filesystem that is local to each cluster which makes it ideal for storing job input and output files. However, because /scratch/gpfs is not backed up you will need to transfer your completed job files to /tigress or /projects when a backup is desired.
+For more information us the following <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/data-storage">link</a>.</p></li>
+</ul>
+<p>**3. Using Python **</p>
+<p>We will be using Jupyter notebooks for first few classes. Jupyter notebook allows us to interactively use Python. First you should use following command in your <em>home</em> directory.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>module load anaconda3/2021.11
+conda create --name myenv &lt;package-1&gt; &lt;package-2&gt; ... &lt;package-N&gt;
+</pre></div>
+</div>
+<p>If you are already familiar with Python or interested in further exploring it use the following <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/python">link</a> for instructions on using Python on Princeton clusters</p>
+<p>We will use Jupyter notebook to access the above conda environment. Please follow the research computing <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/jupyter#ondemand">instructions</a> to run Jupyter on your web-browser. Make a python notebook and name it <em>test</em> with the following code</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Python <span class="nb">test</span>
+</pre></div>
 </div>
 </div>
 
