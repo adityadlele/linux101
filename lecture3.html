@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How to use the computing cluster &#8212; Linux101</title>
+    <title>Molecular dynamics basics &#8212; Linux101</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -48,8 +48,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Simulation Tools" href="tools.html" />
-    <link rel="prev" title="How to get access to Princeton compueter clusters" href="access.html" />
+    <link rel="next" title="Molecular dynamics basics" href="lecture4.html" />
+    <link rel="prev" title="Molecular dynamics basics" href="lecture2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -110,23 +110,23 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="prereq.html">
    Pprerequisites
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="access.html">
      How to get access to Princeton compueter clusters
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="terminal.html">
      How to use the computing cluster
     </a>
    </li>
@@ -142,16 +142,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="md_basics.html">
    Molecular dynamics basics
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="lecture1.html">
      Molecular dynamics basics
@@ -162,8 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
      Molecular dynamics basics
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture3.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Molecular dynamics basics
     </a>
    </li>
@@ -313,7 +313,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/terminal.md"
+        <a href="_sources/lecture3.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -350,60 +350,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-basics">
-   The basics
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>How to use the computing cluster</h1>
+                <h1>Molecular dynamics basics</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-basics">
-   The basics
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -411,25 +374,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="section" id="how-to-use-the-computing-cluster">
-<h1>How to use the computing cluster<a class="headerlink" href="#how-to-use-the-computing-cluster" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="the-basics">
-<h2>The basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
-<p>You can use the research computing website for a <a class="reference external" href="https://researchcomputing.princeton.edu/get-started/guide-princeton-clusters">comprehensive guide</a></p>
-<p>or</p>
-<p>A shorter version:</p>
-<ul class="simple">
-<li><p>Access the compueter cluster using a command prompt. <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/connect-ssh">Click here</a></p></li>
-<li><p>Access the cluster using web. <strong>(I highly reccomend this if you are a beginer)</strong>
-To use the Open OnDemand web interface for Adroit, Della, or Stellar you must first have an account set-up for the cluster you wish to use.
-(For instructions on how to gain access, navigate to Adroit’s(<strong>for this class</strong>) or other clusters webpage in the Systems submenu of the Research Computing site.)
-Once you have an account, you can browse to <a class="reference external" href="https://myadroit.princeton.edu">Adroit</a>.</p></li>
-</ul>
-<p>Note that to access these links from off-campus you will need to use a <a class="reference external" href="https://princeton.service-now.com/snap?id=kb_article&amp;sys_id=ce2a27064f9ca20018ddd48e5210c745">VPN</a>.</p>
-<ul class="simple">
-<li><p>The computer clusters runs Linux. So you will need learn basics of <a class="reference external" href="https://github.com/gabeclass/introcmdline">linux</a>.</p></li>
-</ul>
-</div>
+  <div class="section" id="molecular-dynamics-basics">
+<h1>Molecular dynamics basics<a class="headerlink" href="#molecular-dynamics-basics" title="Permalink to this headline">¶</a></h1>
+<p>TBD</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -459,17 +406,17 @@ Once you have an account, you can browse to <a class="reference external" href="
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="access.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="lecture2.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">How to get access to Princeton compueter clusters</p>
+            <p class="prev-next-title">Molecular dynamics basics</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="tools.html" title="next page">
+    <a class='right-next' id="next-link" href="lecture4.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Simulation Tools</p>
+        <p class="prev-next-title">Molecular dynamics basics</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
