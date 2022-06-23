@@ -373,6 +373,33 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#atomistic-simulation-environment-ase">
+   Atomistic simulation environment (ASE)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lammps">
+   LAMMPS
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#typical-input-files-required-they-names-can-be-changed">
+     Typical input files required (They names can be changed)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lammps-example-script">
+     LAMMPS example script
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#vasp">
    VASP
   </a>
@@ -383,8 +410,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-vasp-on-della">
-     Running VASP on Della
+    <a class="reference internal nav-link" href="#running-vasp-on-adroit">
+     Running VASP on Adroit
     </a>
    </li>
   </ul>
@@ -409,6 +436,33 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#atomistic-simulation-environment-ase">
+   Atomistic simulation environment (ASE)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lammps">
+   LAMMPS
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#typical-input-files-required-they-names-can-be-changed">
+     Typical input files required (They names can be changed)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lammps-example-script">
+     LAMMPS example script
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#vasp">
    VASP
   </a>
@@ -419,8 +473,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-vasp-on-della">
-     Running VASP on Della
+    <a class="reference internal nav-link" href="#running-vasp-on-adroit">
+     Running VASP on Adroit
     </a>
    </li>
   </ul>
@@ -437,6 +491,86 @@ title="Print to PDF"
                 
   <div class="section" id="simulation-tools">
 <h1>Simulation Tools<a class="headerlink" href="#simulation-tools" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="python">
+<h2>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<p>We will be using Jupyter notebooks for first few classes. Jupyter notebook allows us to interactively use Python. First you should use following command in your <em>home</em> directory.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>module load anaconda3/2021.11
+conda create --name myenv &lt;package-1&gt; &lt;package-2&gt; ... &lt;package-N&gt;
+</pre></div>
+</div>
+<p>If you are already familiar with Python or interested in further exploring it use the following <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/python">link</a> for instructions on using Python on Princeton clusters</p>
+<p>We will use Jupyter notebook to access the above conda environment. Please follow the research computing <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/jupyter#ondemand">instructions</a> to run Jupyter on your web-browser. Make a python notebook and name it <em>test</em> with the following code</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Python <span class="nb">test</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="atomistic-simulation-environment-ase">
+<h2>Atomistic simulation environment (ASE)<a class="headerlink" href="#atomistic-simulation-environment-ase" title="Permalink to this headline">¶</a></h2>
+<p>(ASE)[<a class="reference external" href="https://wiki.fysik.dtu.dk/ase/index.html">https://wiki.fysik.dtu.dk/ase/index.html</a>] is a Python based simulation environment that can be used to manage/create/control your simulations on
+multiple standard simulation softwares. We are going to cover some use cases of ASE. We will use it through the interactive Python environment.</p>
+</div>
+<div class="section" id="lammps">
+<h2>LAMMPS<a class="headerlink" href="#lammps" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="typical-input-files-required-they-names-can-be-changed">
+<h3>Typical input files required (They names can be changed)<a class="headerlink" href="#typical-input-files-required-they-names-can-be-changed" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>in.lammps: Input file. This file has all the parameters controlling the simulations (e.g. Thermostat, Barostate, Ensemble)</p></li>
+<li><p>geom.xyz: (optional) Geometry file. This file describes the coordinates of your simulation system. Alternatively, you can also define your system geometry in the input file.</p></li>
+<li><p>potential file: (optional) A file defining the MD potential that you are using.</p></li>
+</ul>
+</div>
+<div class="section" id="lammps-example-script">
+<h3>LAMMPS example script<a class="headerlink" href="#lammps-example-script" title="Permalink to this headline">¶</a></h3>
+<p>We will try to use a LAMMPS executable that has been already compiled</p>
+<p>Use the following job submission script to submit a LAMMPS job</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=lj-melt       # create a short name for your job</span>
+<span class="c1">#SBATCH --nodes=1                # node count</span>
+<span class="c1">#SBATCH --ntasks=4               # total number of tasks across all nodes</span>
+<span class="c1">#SBATCH --cpus-per-task=1        # cpu-cores per task (&gt;1 if multi-threaded tasks)</span>
+<span class="c1">#SBATCH --mem-per-cpu=1G         # memory per cpu-core (4G is default)</span>
+<span class="c1">#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)</span>
+<span class="c1">#SBATCH --mail-type=begin        # send email when job begins</span>
+<span class="c1">#SBATCH --mail-type=end          # send email when job ends</span>
+<span class="c1">#SBATCH --mail-user=&lt;YourNetID&gt;@princeton.edu</span>
+
+module purge
+module load intel/19.1.1.217
+module load intel-mpi/intel/2019.7
+<span class="nb">export</span> <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
+
+srun <span class="nv">$HOME</span>/.local/bin/lmp_adroit -in <span class="k">in</span>.melt
+</pre></div>
+</div>
+<p>The input file can be copied from below</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>units           lj
+atom_style      atomic
+
+lattice         fcc <span class="m">0</span>.8442
+region          box block <span class="m">0</span> <span class="m">30</span> <span class="m">0</span> <span class="m">30</span> <span class="m">0</span> <span class="m">30</span>
+create_box      <span class="m">1</span> box
+create_atoms    <span class="m">1</span> box
+mass            <span class="m">1</span> <span class="m">1</span>.0
+
+velocity        all create <span class="m">1</span>.0 <span class="m">87287</span>
+
+pair_style      lj/cut <span class="m">2</span>.5
+pair_coeff      <span class="m">1</span> <span class="m">1</span> <span class="m">1</span>.0 <span class="m">1</span>.0 <span class="m">2</span>.5
+
+neighbor        <span class="m">0</span>.3 bin
+neigh_modify    every <span class="m">20</span> delay <span class="m">0</span> check no
+
+fix             <span class="m">1</span> all nve
+fix             <span class="m">2</span> all langevin <span class="m">1</span>.0 <span class="m">1</span>.0 <span class="m">1</span>.0 <span class="m">48279</span>
+
+timestep        <span class="m">0</span>.005
+
+thermo          <span class="m">5000</span>
+run             <span class="m">10000</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="vasp">
 <h2>VASP<a class="headerlink" href="#vasp" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="reiterating-some-basics">
@@ -449,8 +583,8 @@ title="Print to PDF"
 <li><p>POTCAR: Concatenated pseudopotentials for elements of your system</p></li>
 </ul>
 </div>
-<div class="section" id="running-vasp-on-della">
-<h3>Running VASP on Della<a class="headerlink" href="#running-vasp-on-della" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="running-vasp-on-adroit">
+<h3>Running VASP on Adroit<a class="headerlink" href="#running-vasp-on-adroit" title="Permalink to this headline">¶</a></h3>
 <p>We will try to use a VASP executable that has been already compiled</p>
 <p>Use the following job submission script to submit a VASP job</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>

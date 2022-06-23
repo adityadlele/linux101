@@ -7,6 +7,7 @@ You can use the research computing website for a [comprehensive guide](https://r
 or 
 
 A shorter version:
+There are two ways to access the Princeton computing cluster
 - Access the compueter cluster using a command prompt. [Click here](https://researchcomputing.princeton.edu/support/knowledge-base/connect-ssh)
 - Access the cluster using web. **(I highly reccomend this if you are a beginer)**
 To use the Open OnDemand web interface for Adroit, Della, or Stellar you must first have an account set-up for the cluster you wish to use. 
@@ -21,28 +22,13 @@ Note that to access these links from off-campus you will need to use a [VPN](htt
 **2. File system **
 
 There are two types of file storages available for all the clusters. For adroit
-1. /home/<YourNetID> **(You can store imporatant results here!)**
+1. /home/YourNetID **(You can store imporatant results here!)**
 * For - source code and executables
 * Details - This folder is small and it is intended for storing source code, executables, Conda environments, R or Julia packages and small data sets.
 
-2.  /scratch/network/<YourNetID> **(You will run your jobs here!)**
+2.  /scratch/network/YourNetID **(You will run your jobs here!)**
 * For - job output, intermediate results
 * Details - This folder is a fast, parallel filesystem that is local to each cluster which makes it ideal for storing job input and output files. However, because /scratch/gpfs is not backed up you will need to transfer your completed job files to /tigress or /projects when a backup is desired.
 For more information us the following [link](https://researchcomputing.princeton.edu/support/knowledge-base/data-storage).
 
-**3. Using Python **
 
-We will be using Jupyter notebooks for first few classes. Jupyter notebook allows us to interactively use Python. First you should use following command in your *home* directory. 
-```sh
-module load anaconda3/2021.11
-conda create --name myenv <package-1> <package-2> ... <package-N>
-```
-If you are already familiar with Python or interested in further exploring it use the following [link](https://researchcomputing.princeton.edu/support/knowledge-base/python) for instructions on using Python on Princeton clusters 
-
-We will use Jupyter notebook to access the above conda environment. Please follow the research computing [instructions](https://researchcomputing.princeton.edu/support/knowledge-base/jupyter#ondemand) to run Jupyter on your web-browser. Make a python notebook and name it *test* with the following code 
-
-   
-
-```sh
-Python test
-```

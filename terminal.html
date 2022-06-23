@@ -379,7 +379,8 @@ title="Print to PDF"
 <p>** 1. Getting started **</p>
 <p>You can use the research computing website for a <a class="reference external" href="https://researchcomputing.princeton.edu/get-started/guide-princeton-clusters">comprehensive guide</a></p>
 <p>or</p>
-<p>A shorter version:</p>
+<p>A shorter version:
+There are two ways to access the Princeton computing cluster</p>
 <ul class="simple">
 <li><p>Access the compueter cluster using a command prompt. <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/connect-ssh">Click here</a></p></li>
 <li><p>Access the cluster using web. <strong>(I highly reccomend this if you are a beginer)</strong>
@@ -394,31 +395,20 @@ Once you have an account, you can browse to <a class="reference external" href="
 <p>**2. File system **</p>
 <p>There are two types of file storages available for all the clusters. For adroit</p>
 <ol class="simple">
-<li><p>/home/<YourNetID> <strong>(You can store imporatant results here!)</strong></p></li>
+<li><p>/home/YourNetID <strong>(You can store imporatant results here!)</strong></p></li>
 </ol>
 <ul class="simple">
 <li><p>For - source code and executables</p></li>
 <li><p>Details - This folder is small and it is intended for storing source code, executables, Conda environments, R or Julia packages and small data sets.</p></li>
 </ul>
 <ol class="simple">
-<li><p>/scratch/network/<YourNetID> <strong>(You will run your jobs here!)</strong></p></li>
+<li><p>/scratch/network/YourNetID <strong>(You will run your jobs here!)</strong></p></li>
 </ol>
 <ul class="simple">
 <li><p>For - job output, intermediate results</p></li>
 <li><p>Details - This folder is a fast, parallel filesystem that is local to each cluster which makes it ideal for storing job input and output files. However, because /scratch/gpfs is not backed up you will need to transfer your completed job files to /tigress or /projects when a backup is desired.
 For more information us the following <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/data-storage">link</a>.</p></li>
 </ul>
-<p>**3. Using Python **</p>
-<p>We will be using Jupyter notebooks for first few classes. Jupyter notebook allows us to interactively use Python. First you should use following command in your <em>home</em> directory.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>module load anaconda3/2021.11
-conda create --name myenv &lt;package-1&gt; &lt;package-2&gt; ... &lt;package-N&gt;
-</pre></div>
-</div>
-<p>If you are already familiar with Python or interested in further exploring it use the following <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/python">link</a> for instructions on using Python on Princeton clusters</p>
-<p>We will use Jupyter notebook to access the above conda environment. Please follow the research computing <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/jupyter#ondemand">instructions</a> to run Jupyter on your web-browser. Make a python notebook and name it <em>test</em> with the following code</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Python <span class="nb">test</span>
-</pre></div>
-</div>
 </div>
 
     <script type="text/x-thebe-config">
