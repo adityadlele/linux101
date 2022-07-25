@@ -1,4 +1,4 @@
-Pprerequisites
+Prerequisites
 =======================
 
 We are going to cover following things
