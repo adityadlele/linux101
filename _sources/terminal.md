@@ -1,6 +1,6 @@
 # How to use the computing cluster
 
-** 1. Getting started **
+## Getting started
  
 You can use the research computing website for a [comprehensive guide](https://researchcomputing.princeton.edu/get-started/guide-princeton-clusters)
 
@@ -19,7 +19,7 @@ Note that to access these links from off-campus you will need to use a [VPN](htt
 - The computer clusters runs Linux. So you will need learn basics of [linux](https://github.com/gabeclass/introcmdline).
 
 
-**2. File system **
+## File system
 
 There are two types of file storages available for all the clusters. For adroit
 1. /home/YourNetID **(You can store imporatant results here!)**

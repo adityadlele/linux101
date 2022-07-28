@@ -7,11 +7,12 @@ Exercise 0
 3. You can perform basic tasks on the computer cluster
 
 ## Part 1
-1.Go to your *network* directory and create a directory called *ex0*
-2.Create the following subdirectories inside the *ex0* directory: vasp,lammps,ase
+1. Go to your *network* directory and create a directory called *ex0*
+2. Create the following subdirectories inside the *ex0* directory: vasp,lammps,ase
+
 You will excute small simulations in each of the above subdirectories
 ## Part 2: ASE
-1.Copy the following code to a file named ase.py
+1. Copy the following code to a file named ase.py
 ```
 from ase.spacegroup import crystal
 from ase.visualize import view
@@ -38,16 +39,16 @@ del gAl2O3_110[gAl2O3_110.positions[:, 2] > 8.9]
 write('al2o321.xyz',gAl2O3_110)
 
 ```
-2.Activate the python environment using following two commands
--`module load anaconda3/2021.11`
--`conda activate ase`
-3.Execute the file using the following command inside the folder ase  `python ase.py`
-4.Download the *al2o321.xyz* file and visualize it using OVITO. 
+2. Activate the python environment using following two commands
+*`module load anaconda3/2021.11`
+*`conda activate ase`
+3. Execute the file using the following command inside the folder ase  `python ase.py`
+4. Download the *al2o321.xyz* file and visualize it using OVITO. 
 
 Submit an image generated using OVITO showing the top and two side views of the structure in the downloaded file.
 
 ## Part 3: LAMMPS
-1.Copy the following code to a file named in.lammps
+1. Copy the following code to a file named in.lammps
 ```sh
 units           lj
 atom_style      atomic
@@ -96,7 +97,12 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_adroit -in in.melt
 ```
+3. Excecute the job using the command
 
-3. Plot the potential energy as a function of time using GNUPLOT
+`sbatch job.slurm`
+
+You can take a look at [this](https://researchcomputing.princeton.edu/support/knowledge-base/slurm) guide to learn more about job monitoring.
+
+4. Plot the potential energy as a function of time using GNUPLOT
 
 ## Part 4: VASP

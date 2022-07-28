@@ -75,8 +75,8 @@ plt.legend(lines, labels)
 plt.show()
 ```
 
-```{note} Exercize 1
-This is your first excersize: Use the code above as an example to plot energy of L-J potentials for He, Ne and Kr. Comment on the comparison.
+```{admonition} Exercise 1
+Use the code above as an example to plot energy of L-J potentials for He, Ne and Kr. Comment on the comparison.
 ```
 
 
