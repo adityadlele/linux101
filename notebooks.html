@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content with notebooks &#8212; Linux101</title>
+    <title>Content with notebooks &#8212; Practical Molecular simulations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -95,7 +95,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">Linux101</h1>
+      <h1 class="site-logo" id="site-title">Practical Molecular simulations</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -144,28 +144,8 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lecture1.html">
-   Lecture 1
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lecture2.html">
-   Molecular dynamics basics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lecture3.html">
-   Molecular dynamics basics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lecture4.html">
-   Molecular dynamics basics
-  </a>
- </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="LAMMPS.html">
+  <a class="reference internal" href="md_basics.html">
    Molecular dynamics basics
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -175,20 +155,30 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture5.html">
-     Molecular dynamics basics
+    <a class="reference internal" href="lecture1.html">
+     Lecture 1
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture6.html">
-     Molecular dynamics basics
+    <a class="reference internal" href="lecture2.html">
+     Lecture 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture3.html">
+     Lecture 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture4.html">
+     Lecture 3
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Advanced_techniques.html">
-   Molecular dynamics basics
+  <a class="reference internal" href="LAMMPS.html">
+   LAMMPS
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -197,20 +187,20 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture7.html">
-     Molecular dynamics basics
+    <a class="reference internal" href="lecture5.html">
+     Lecture 5
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture8.html">
-     Molecular dynamics basics
+    <a class="reference internal" href="lecture6.html">
+     Lecture
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="DFT.html">
-   Molecular dynamics basics
+  <a class="reference internal" href="Advanced_techniques.html">
+   Advanced techniques
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -219,13 +209,52 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="lecture7.html">
+     Lecture 7
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture8.html">
+     Lecture 8
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="DFT.html">
+   DFT
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="lecture9.html">
-     Molecular dynamics basics
+     Lecture 9
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="lecture10.html">
-     Molecular dynamics basics
+     Lecture 10
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="Exercises.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex0.html">
+     Exercise 0
     </a>
    </li>
   </ul>
@@ -493,7 +522,7 @@ For example, here’s some sample Matplotlib code:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.pyplot._IonContext at 0x14c17831eb80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.pyplot._IonContext at 0x1462b2ab50d0&gt;
 </pre></div>
 </div>
 </div>

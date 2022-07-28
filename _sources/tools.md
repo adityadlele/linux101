@@ -20,14 +20,23 @@ Python test
 
 ## Atomistic simulation environment (ASE)
 
-(ASE)[https://wiki.fysik.dtu.dk/ase/index.html] is a Python based simulation environment that can be used to manage/create/control your simulations on 
+[ASE](https://wiki.fysik.dtu.dk/ase/index.html) is a Python based simulation environment that can be used to manage/create/control your simulations on 
 multiple standard simulation softwares. We are going to cover some use cases of ASE. We will use it through the interactive Python environment.  
 
-
+```{admonition} Create an ASE envoronment on Adroit using conda
+Execute the following commands
+1. Load the anaconda module 
+`module load anaconda3/2021.11`
+2.Create a conda environment ASE
+`conda create --name ase ase pandas matplotlib --channel conda-forge`
+3.To check the environment execute the following
+`conda activate ase`
+You should see a small **[ase]** text at the start of your command line
+```
 
 ## LAMMPS
 
-### Typical input files required (They names can be changed)
+### Typical input files required (The names can be changed)
 
 - in.lammps: Input file. This file has all the parameters controlling the simulations (e.g. Thermostat, Barostate, Ensemble) 
 - geom.xyz: (optional) Geometry file. This file describes the coordinates of your simulation system. Alternatively, you can also define your system geometry in the input file.

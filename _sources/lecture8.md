@@ -1,4 +1,4 @@
-Molecular dynamics basics
-=======================
+Lecture 8
+=========
 
 TBD

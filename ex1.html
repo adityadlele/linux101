@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 8 &#8212; Practical Molecular simulations</title>
+    <title>Exercise 1 &#8212; Practical Molecular simulations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -46,12 +46,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="DFT" href="DFT.html" />
-    <link rel="prev" title="Lecture 7" href="lecture7.html" />
+    <link rel="prev" title="Exercise 0" href="ex0.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -198,23 +195,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Advanced_techniques.html">
    Advanced techniques
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="lecture7.html">
      Lecture 7
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture8.html">
      Lecture 8
     </a>
    </li>
@@ -242,19 +239,24 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="Exercises.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="ex0.html">
      Exercise 0
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Exercise 1
     </a>
    </li>
   </ul>
@@ -332,7 +334,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/lecture8.md"
+        <a href="_sources/ex1.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -381,7 +383,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lecture 8</h1>
+                <h1>Exercise 1</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -393,9 +395,46 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="section" id="lecture-8">
-<h1>Lecture 8<a class="headerlink" href="#lecture-8" title="Permalink to this headline">¶</a></h1>
-<p>TBD</p>
+  <div class="section" id="exercise-1">
+<h1>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h1>
+<p>Use the code below as an example to plot energy of L-J potentials for He, Ne and Kr. Comment on the comparison.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Boltzmann&#39;s constant, J/K</span>
+<span class="n">kB</span> <span class="o">=</span> <span class="mf">1.381e-23</span>
+
+<span class="c1"># The Lennard-Jones parameters:</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mf">1.024e-23</span>   <span class="c1"># J.nm^6</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mf">1.582e-26</span>   <span class="c1"># J.nm^12</span>
+
+<span class="c1"># Adjust the units of A and B - they have more manageable values</span>
+<span class="c1"># in K.nm^6 and K.nm^12</span>
+<span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">A</span> <span class="o">/</span> <span class="n">kB</span><span class="p">,</span> <span class="n">B</span> <span class="o">/</span> <span class="n">kB</span>
+
+<span class="c1"># Interatomic distance, in nm</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="c1"># Interatomic potential</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">B</span><span class="o">/</span><span class="n">r</span><span class="o">**</span><span class="mi">12</span> <span class="o">-</span> <span class="n">A</span><span class="o">/</span><span class="n">r</span><span class="o">**</span><span class="mi">6</span>
+<span class="c1"># Interatomic force</span>
+<span class="n">F</span> <span class="o">=</span> <span class="mi">12</span><span class="o">*</span><span class="n">B</span><span class="o">/</span><span class="n">r</span><span class="o">**</span><span class="mi">13</span> <span class="o">-</span> <span class="mi">6</span><span class="o">*</span><span class="n">A</span><span class="o">/</span><span class="n">r</span><span class="o">**</span><span class="mi">7</span>
+
+<span class="n">line1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;U(r)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">line2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;F(r)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Jump through some hoops to get the both line&#39;s labels in the same legend:</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">line1</span> <span class="o">+</span> <span class="n">line2</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+    <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">get_label</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -425,19 +464,12 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="lecture7.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ex0.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lecture 7</p>
+            <p class="prev-next-title">Exercise 0</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="DFT.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DFT</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
