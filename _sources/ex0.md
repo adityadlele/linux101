@@ -40,9 +40,15 @@ write('al2o321.xyz',gAl2O3_110)
 
 ```
 2. Activate the python environment using following two commands
-*`module load anaconda3/2021.11`
-*`conda activate ase`
-3. Execute the file using the following command inside the folder ase  `python ase.py`
+	* `module load anaconda3/2021.11`
+	* `conda activate ase`
+```{note}
+You will have to perfrom the two steps above every time you want to excute a python script
+```
+3. Execute the file using the following command inside the folder ase  
+
+`python ase.py`
+
 4. Download the *al2o321.xyz* file and visualize it using OVITO. 
 
 Submit an image generated using OVITO showing the top and two side views of the structure in the downloaded file.
