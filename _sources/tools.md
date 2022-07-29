@@ -27,18 +27,18 @@ multiple standard simulation softwares. We are going to cover some use cases of 
 Execute the following commands
 1. Load the anaconda module 
 
-```
+```sh
 module load anaconda3/2021.11
 ```
 2. Create a conda environment ASE
 
-```
+```sh
 conda create --name ase ase pandas matplotlib ase-notebook --channel conda-forge
 ```
 
 3. To check the environment execute the following
 
-```
+```sh
 conda activate ase
 ```
 You should see a small **(ase)** text at the start of your command line
