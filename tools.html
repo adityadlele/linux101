@@ -494,26 +494,19 @@ multiple standard simulation softwares. We are going to cover some use cases of 
 <div class="admonition-create-an-ase-envoronment-on-adroit-using-conda admonition">
 <p class="admonition-title">Create an ASE envoronment on Adroit using conda</p>
 <p>Execute the following commands</p>
-<ol class="simple">
-<li><p>Load the anaconda module</p></li>
-</ol>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>module load anaconda3/2021.11
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">#Load the anaconda module</span>
+module load anaconda3/2021.11
+
+<span class="c1">#Create a conda environment ASE</span>
+conda create --name ase ase pandas matplotlib ase-notebook --channel conda-forge
+
+<span class="c1">#To check the environment execute the following</span>
+conda activate ase
+
+<span class="c1">#You should see a small **(ase)** text at the start of your command line</span>
 </pre></div>
 </div>
 </div>
-<ol class="simple">
-<li><p>Create a conda environment ASE</p></li>
-</ol>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda create --name ase ase pandas matplotlib ase-notebook --channel conda-forge
-</pre></div>
-</div>
-<ol class="simple">
-<li><p>To check the environment execute the following</p></li>
-</ol>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda activate ase
-</pre></div>
-</div>
-<p>You should see a small <strong>(ase)</strong> text at the start of your command line</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 ## LAMMPS
 
