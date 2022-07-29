@@ -27,16 +27,20 @@ multiple standard simulation softwares. We are going to cover some use cases of 
 Execute the following commands
 1. Load the anaconda module 
 
-`module load anaconda3/2021.11`
+```
+module load anaconda3/2021.11
+```
+2. Create a conda environment ASE
 
-2.Create a conda environment ASE
+```
+conda create --name ase ase pandas matplotlib ase-notebook --channel conda-forge
+```
 
-`conda create --name ase ase pandas matplotlib --channel conda-forge`
+3. To check the environment execute the following
 
-3.To check the environment execute the following
-
-`conda activate ase`
-
+```
+conda activate ase
+```
 You should see a small **(ase)** text at the start of your command line
 
 ```
@@ -67,11 +71,10 @@ Use the following job submission script to submit a LAMMPS job
 #SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
-module load intel/19.1.1.217
-module load intel-mpi/intel/2019.7
+module load intel/19.1.1.217 intel-mpi/intel/2019.7
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-srun $HOME/.local/bin/lmp_adroit -in in.melt
+srun /home/al9001/.local/bin/lmp_adroit -in in.melt
 ```
 
 The input file can be copied from below

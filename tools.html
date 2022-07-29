@@ -46,8 +46,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Molecular dynamics basics" href="md_basics.html" />
@@ -166,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="lecture4.html">
-     Lecture 3
+     Lecture 4
     </a>
    </li>
   </ul>
@@ -188,7 +186,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="lecture6.html">
-     Lecture
+     Lecture 6
     </a>
    </li>
   </ul>
@@ -533,12 +531,22 @@ multiple standard simulation softwares. We are going to cover some use cases of 
 <ol class="simple">
 <li><p>Load the anaconda module</p></li>
 </ol>
-<p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">anaconda3/2021.11</span></code></p>
-<p>2.Create a conda environment ASE</p>
-<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">ase</span> <span class="pre">ase</span> <span class="pre">pandas</span> <span class="pre">matplotlib</span> <span class="pre">--channel</span> <span class="pre">conda-forge</span></code></p>
-<p><a class="reference external" href="http://3.To">3.To</a> check the environment execute the following</p>
-<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">ase</span></code></p>
-<p>You should see a small <strong>(ase)</strong> text at the start of your command line</p>
+</div>
+<p>module load anaconda3/2021.11</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">2.</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">conda</span> <span class="n">environment</span> <span class="n">ASE</span>
+
+</pre></div>
+</div>
+<p>conda create –name ase ase pandas matplotlib ase-notebook –channel conda-forge</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="mf">3.</span> <span class="n">To</span> <span class="n">check</span> <span class="n">the</span> <span class="n">environment</span> <span class="n">execute</span> <span class="n">the</span> <span class="n">following</span>
+
+</pre></div>
+</div>
+<p>conda activate ase</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">should</span> <span class="n">see</span> <span class="n">a</span> <span class="n">small</span> <span class="o">**</span><span class="p">(</span><span class="n">ase</span><span class="p">)</span><span class="o">**</span> <span class="n">text</span> <span class="n">at</span> <span class="n">the</span> <span class="n">start</span> <span class="n">of</span> <span class="n">your</span> <span class="n">command</span> <span class="n">line</span>
+
+</pre></div>
 </div>
 </div>
 <div class="section" id="lammps">
@@ -567,11 +575,10 @@ multiple standard simulation softwares. We are going to cover some use cases of 
 <span class="c1">#SBATCH --mail-user=&lt;YourNetID&gt;@princeton.edu</span>
 
 module purge
-module load intel/19.1.1.217
-module load intel-mpi/intel/2019.7
+module load intel/19.1.1.217 intel-mpi/intel/2019.7
 <span class="nb">export</span> <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
 
-srun <span class="nv">$HOME</span>/.local/bin/lmp_adroit -in <span class="k">in</span>.melt
+srun /home/al9001/.local/bin/lmp_adroit -in <span class="k">in</span>.melt
 </pre></div>
 </div>
 <p>The input file can be copied from below</p>
