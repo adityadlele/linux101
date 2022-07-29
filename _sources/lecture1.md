@@ -110,8 +110,16 @@ from ase import units
 Let us first define the simulation box geometry.
 
 ```{code-cell} ipython3
+config = ViewConfig()
+ase_view = AseView(config)
 atoms=read('/home/al9001/Ar.xyz')
-view(atoms, viewer='ngl')
+#view(atoms, viewer='ngl')
+ase_view.config.canvas_color_background = "blue"
+ase_view.config.canvas_background_opacity = 0.2
+gui = ase_view.make_render(
+    atoms, center_in_uc=True)
+gui
+
 ```
 
 Run a sample MD simulation.
