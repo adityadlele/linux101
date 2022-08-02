@@ -15,6 +15,44 @@ kernelspec:
 
 Lecture 1
 =========
+## Molecular dynamics simulations
+
+Molecular dynamics simulations typically refere to computer simulations of molecular motion. We are mainly going to discuss classical reactive molecular
+dynamics in this class. The classical part of this name referes to emipirical potentials that drive the motion of atoms using Newtons classical laws of 
+motion. These empirical potentials can either describe non-reactive or reactive processes governed by molecular motion. We are largely going to stick to
+reactive molecular molecular dynamics simulations, specifically ReaxFF potential. 
+
+Chemical reactive events are ubiquitous in nature. These events govern many aspects of our lives, from energy generating combustion reactions to 
+metabolism. These events span several thermodynamic and time scales. Computationally studying and modelling these reaction events is a major asset
+ in our quest to understand the world that we live in. A variety of methods, ranging from the quantum chemistry studies of reactions to continuum 
+scale simulations of reactive processes, are available to study reaction chemistry. The first principle or quantum chemistry (QC) methods delve into 
+the atomic world, describing electronic structures and associated useful properties used to characterize a reaction event. However, these methods 
+become computationally untenable for the scale of several hundreds of atoms even with the best current computational resources. On the other end of 
+size spectrum are continuum scale computational fluid dynamics simulations (CFD). These can simulate much larger scale processes such as the combustion
+ in an automobile engine [1], which involves fluid mechanics as well as reactions chemistry processes. However, the CFD simulations typically involve
+ only a simplified description of reactive events in the form of lumped or abbreviated reaction mechanisms.
+
+Reactive force field methods bridge the gap between the first principle and CFD methods. These methods deploy connection-dependent interatomic 
+potentials to calculate system energy as a function of atomic positions. In the ReaxFF reactive force field method, the interatomic potential describes 
+reactive events through a bond-order formalism, where bond order is empirically calculated from interatomic distances. The interatomic potentials 
+are trained using the QC data. Electronic interactions driving chemical bonding are treated implicitly, allowing the method to simulate reaction 
+chemistry without explicit QC consideration. This puts ReaxFF in a unique position to simulate reaction dynamics of systems involving thousands of 
+molecules while approaching the accuracy of the QC methods.
+
+## What is an interatomic potential?
+To understand the atomic motion, we first need to understand the forces and energies among these atoms. Imagine a car driving on a straight road. 
+The position of the car as a function of time can be determined using Newtons laws of motion. However, to determine the velocity or acceleration 
+of the vehicle, we also need to calculate the energy produced by the engine as a function of time. This energy would be a function of fuel intake, 
+wnd resistance and several other factors. Similarly, a molecular dynamics potential defines the energy of the system as a function of interatomic 
+distances and configurations. These interatomc potential are the driving engine of the molecular dynamics simulations.
+
+The form of the interatomic potential depends on the application it has been developed for. Let us consider the example of an inert gas. Assume that
+we want to model the motion of an inert gas and derive useful properties such as its density as a function of temperature and pressure. Given that 
+it is an inert gas, the energy change in the system would mainly originate from the atoms moving close and away from each other. There are not 
+reactions happening among the molecules. If we don't want to simulate high temperatures where the atoms break apart forming plasma, we would need 
+an expression describing energy of a system of two atoms as a function of interatomic distance. The following section review one such potential.
+
+
 ## L-J potential
 
 The LJ potential is defined as 

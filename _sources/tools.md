@@ -40,7 +40,6 @@ conda activate ase
 #You should see a small **(ase)** text at the start of your command line
 
 ```
-```
 
 ## LAMMPS
 

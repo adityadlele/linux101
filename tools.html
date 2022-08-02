@@ -46,6 +46,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Molecular dynamics basics" href="md_basics.html" />
@@ -400,6 +402,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lammps">
+   LAMMPS
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#typical-input-files-required-the-names-can-be-changed">
+     Typical input files required (The names can be changed)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lammps-example-script">
+     LAMMPS example script
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#vasp">
    VASP
   </a>
@@ -444,6 +463,23 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#atomistic-simulation-environment-ase">
    Atomistic simulation environment (ASE)
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lammps">
+   LAMMPS
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#typical-input-files-required-the-names-can-be-changed">
+     Typical input files required (The names can be changed)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lammps-example-script">
+     LAMMPS example script
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#vasp">
@@ -507,37 +543,37 @@ conda activate ase
 </pre></div>
 </div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-## LAMMPS
-
-### Typical input files required (The names can be changed)
-
-- in.lammps: Input file. This file has all the parameters controlling the simulations (e.g. Thermostat, Barostate, Ensemble) 
-- geom.xyz: (optional) Geometry file. This file describes the coordinates of your simulation system. Alternatively, you can also define your system geometry in the input file.
-- potential file: (optional) A file defining the MD potential that you are using.
-
-### LAMMPS example script
-
-We will try to use a LAMMPS executable that has been already compiled
-
-Use the following job submission script to submit a LAMMPS job
-```sh
-#!/bin/bash
-#SBATCH --job-name=lj-melt       # create a short name for your job
-#SBATCH --nodes=1                # node count
-#SBATCH --ntasks=4               # total number of tasks across all nodes
-#SBATCH --cpus-per-task=1        # cpu-cores per task (&gt;1 if multi-threaded tasks)
-#SBATCH --mem-per-cpu=1G         # memory per cpu-core (4G is default)
-#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
-#SBATCH --mail-type=begin        # send email when job begins
-#SBATCH --mail-type=end          # send email when job ends
-#SBATCH --mail-user=&lt;YourNetID&gt;@princeton.edu
+</div>
+<div class="section" id="lammps">
+<h2>LAMMPS<a class="headerlink" href="#lammps" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="typical-input-files-required-the-names-can-be-changed">
+<h3>Typical input files required (The names can be changed)<a class="headerlink" href="#typical-input-files-required-the-names-can-be-changed" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>in.lammps: Input file. This file has all the parameters controlling the simulations (e.g. Thermostat, Barostate, Ensemble)</p></li>
+<li><p>geom.xyz: (optional) Geometry file. This file describes the coordinates of your simulation system. Alternatively, you can also define your system geometry in the input file.</p></li>
+<li><p>potential file: (optional) A file defining the MD potential that you are using.</p></li>
+</ul>
+</div>
+<div class="section" id="lammps-example-script">
+<h3>LAMMPS example script<a class="headerlink" href="#lammps-example-script" title="Permalink to this headline">¶</a></h3>
+<p>We will try to use a LAMMPS executable that has been already compiled</p>
+<p>Use the following job submission script to submit a LAMMPS job</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=lj-melt       # create a short name for your job</span>
+<span class="c1">#SBATCH --nodes=1                # node count</span>
+<span class="c1">#SBATCH --ntasks=4               # total number of tasks across all nodes</span>
+<span class="c1">#SBATCH --cpus-per-task=1        # cpu-cores per task (&gt;1 if multi-threaded tasks)</span>
+<span class="c1">#SBATCH --mem-per-cpu=1G         # memory per cpu-core (4G is default)</span>
+<span class="c1">#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)</span>
+<span class="c1">#SBATCH --mail-type=begin        # send email when job begins</span>
+<span class="c1">#SBATCH --mail-type=end          # send email when job ends</span>
+<span class="c1">#SBATCH --mail-user=&lt;YourNetID&gt;@princeton.edu</span>
 
 module purge
 module load intel/19.1.1.217 intel-mpi/intel/2019.7
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+<span class="nb">export</span> <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
 
-srun /home/al9001/.local/bin/lmp_adroit -in in.melt
+srun /home/al9001/.local/bin/lmp_adroit -in <span class="k">in</span>.melt
 </pre></div>
 </div>
 <p>The input file can be copied from below</p>
@@ -566,6 +602,7 @@ timestep        <span class="m">0</span>.005
 thermo          <span class="m">5000</span>
 run             <span class="m">10000</span>
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="vasp">
