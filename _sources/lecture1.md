@@ -134,7 +134,7 @@ have following aspects as a part of them.
 
 ```{figure} ./images/MD_structure.png
 ---
-height: 150px
+height: 300px
 name: directive-fig
 ---
 Simplefied structure of a typical MD code.
