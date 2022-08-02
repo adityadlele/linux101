@@ -132,6 +132,16 @@ Use the code above as an example to plot energy of L-J potentials for He, Ne and
 So how do we model the motion of the molecules using the interatomic potential. This task is perfromed by numerous MD codes, most of which 
 have following aspects as a part of them. 
 
+```{figure} ./images/MD_structure.png
+---
+height: 150px
+name: directive-fig
+---
+Simplefied structure of a typical MD code.
+```
+
+
+
 ## The MD run
 
 Let us take a look at an example of a LJ potential to model the motion of an inert gas. You will be
