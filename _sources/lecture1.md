@@ -50,10 +50,10 @@ The form of the interatomic potential depends on the application it has been dev
 we want to model the motion of an inert gas and derive useful properties such as its density as a function of temperature and pressure. Given that 
 it is an inert gas, the energy change in the system would mainly originate from the atoms moving close and away from each other. There are not 
 reactions happening among the molecules. If we don't want to simulate high temperatures where the atoms break apart forming plasma, we would need 
-an expression describing energy of a system of two atoms as a function of interatomic distance. The following section review one such potential.
+an expression describing energy of a system of two atoms as a function of interatomic distance. The following section reviews one such potential.
 
 
-## L-J potential
+### L-J potential
 
 The LJ potential is defined as 
 
@@ -71,6 +71,7 @@ Let us plot the LJ potential first
 ```{code-cell} ipython3
 import numpy as np
 import matplotlib.pyplot as plt
+from myst_nb import glue
 ```
 
 
@@ -110,14 +111,26 @@ for line in lines:
     labels.append(line.get_label())
 plt.legend(lines, labels)
 
-plt.show()
+#plt.show()
+glue("lj_fig", plt.show(), display=False)
 ```
+
+```{glue:figure} lj_fig
+:figwidth: 300px
+:name: "lj fig"
+
+L-J potential for Ar gas.
+```
+
 
 ```{admonition} Exercise 1
 Use the code above as an example to plot energy of L-J potentials for He, Ne and Kr. Comment on the comparison.
 ```
 
+## Anatomy of an MD code
 
+So how do we model the motion of the molecules using the interatomic potential. This task is perfromed by numerous MD codes, most of which 
+have following aspects as a part of them. 
 
 ## The MD run
 
