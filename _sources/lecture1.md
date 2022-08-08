@@ -69,6 +69,7 @@ Let us plot the LJ potential first
 
 
 ```{code-cell} ipython3
+:tags: ["remove-cell"]
 import numpy as np
 import matplotlib.pyplot as plt
 from myst_nb import glue
@@ -129,20 +130,27 @@ Use the code above as an example to plot energy of L-J potentials for He, Ne and
 
 ## Anatomy of an MD code
 
-So how do we model the motion of the molecules using the interatomic potential. This task is perfromed by numerous MD codes, most of which 
-have following aspects as a part of them. 
+So how do we model the motion of the molecules using the interatomic potential. This task is performed by numerous MD codes (such as LAMMPS), 
+most of which have following aspects as a part of them. The codes typically start by intialting positions and velocities for the particles based
+on user defined directives. These properties are then used to determine interatomic forces between the particles. The forces,positions and 
+velocities are then used to solve Newton's equations of motion numerically. The numerical equation detrmines the updated positions of the particles
+after a small but finite time (time-step). The old and new positions can then be used to detrmine the new velocities. This cycle is continued for 
+multiple time-steps until the desired properties are obtained. On top this basic structure, MD simulation codes also have ways to impose thermodynamic
+conditions on the simulated system through thermostats and barostats, which we will discuss later. What is also clear from this description is that 
+all the properties of interest need to be a function of position and velocities of the particles.
 
 ```{figure} ./images/MD_structure.png
 ---
 height: 300px
 name: directive-fig
 ---
-Simplefied structure of a typical MD code.
+Simplified structure of a typical MD code.
 ```
 
 
 
 ## The MD run
+
 
 Let us take a look at an example of a LJ potential to model the motion of an inert gas. You will be
 able to play with the following code as a part of excersize for this lecture. The code uses ASE to
