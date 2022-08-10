@@ -69,15 +69,54 @@ Let us plot the LJ potential first
 
 
 ```{code-cell} ipython3
-:tags: ["remove-cell"]
 import numpy as np
 import matplotlib.pyplot as plt
+```
+```{code-cell} ipython3
+:tags: ["remove-cell"]
 from myst_nb import glue
 ```
 
 
 
 ```{code-cell} ipython3
+:tags: ["remove-output"]
+# Boltzmann's constant, J/K
+kB = 1.381e-23
+
+# The Lennard-Jones parameters:
+A = 1.024e-23   # J.nm^6
+B = 1.582e-26   # J.nm^12
+
+# Adjust the units of A and B - they have more manageable values
+# in K.nm^6 and K.nm^12
+A, B = A / kB, B / kB
+
+# Interatomic distance, in nm
+r = np.linspace(0.3, 1, 1000)
+# Interatomic potential
+U = B/r**12 - A/r**6
+# Interatomic force
+#F = Put your formula
+
+fig, ax = plt.subplots()
+plt.xlim(0.3, 0.8)
+plt.ylim(-150, 100)
+
+ax.plot(r, U, 'k', linewidth=2,  label=r'U(r)')
+
+```
+
+```{code-cell} ipython3
+:tags: ["remove-cell"]
+
+
+glue("lj_fig", fig, display=False)
+```
+
+
+```{code-cell} ipython3
+:tags: ["remove-cell"]
 # Boltzmann's constant, J/K
 kB = 1.381e-23
 
@@ -113,8 +152,10 @@ for line in lines:
 plt.legend(lines, labels)
 
 #plt.show()
-glue("lj_fig", plt.show(), display=False)
+#glue("lj_fig", plt.show(), display=False)
 ```
+
+
 
 ```{glue:figure} lj_fig
 :figwidth: 300px
@@ -125,7 +166,8 @@ L-J potential for Ar gas.
 
 
 ```{admonition} Exercise 1
-Use the code above as an example to plot energy of L-J potentials for He, Ne and Kr. Comment on the comparison.
+Use the code above as an example to a) plot energy of L-J potentials for He, Ne and Kr. Comment on the comparison. b) If the force on the particles
+ is expressed as $F_r=\frac{dV(r)}{dr}$, plot the forces along with potential energy for the above.
 ```
 
 ## Anatomy of an MD code

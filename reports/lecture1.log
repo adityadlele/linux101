@@ -17,6 +17,7 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
+#:tags: ["hide-output"]
 # Boltzmann's constant, J/K
 kB = 1.381e-23
 
@@ -33,35 +34,26 @@ r = np.linspace(0.3, 1, 1000)
 # Interatomic potential
 U = B/r**12 - A/r**6
 # Interatomic force
-F = 12*B/r**13 - 6*A/r**7
+#F = Put your formula
 
-line1 = plt.plot(r, U, 'k', lw=2, label=r'U(r)')
-plt.xlim(0.3, 0.8)
-plt.ylim(-150, 100)
+fig, ax = plt.subplots()
+ax.xlim(0.3, 0.8)
+ax.ylim(-150, 100)
 
-plt.twinx()
-line2 = plt.plot(r, F, 'k', ls=':', lw=2, label=r'F(r)')
-plt.xlim(0.3, 0.8)
-plt.ylim(-1000, 1000)
+ax.plot(r, U, 'k', linewidth=2,  label=r'U(r)')
 
-# Jump through some hoops to get the both line's labels in the same legend:
-lines = line1 + line2
-labels = []
-for line in lines:
-    labels.append(line.get_label())
-plt.legend(lines, labels)
-
-#plt.show()
-glue("lj_fig", plt.show(), display=False)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-Input [0;32mIn [2][0m, in [0;36m<module>[0;34m[0m
-[1;32m     33[0m plt[38;5;241m.[39mlegend(lines, labels)
-[1;32m     35[0m [38;5;66;03m#plt.show()[39;00m
-[0;32m---> 36[0m [43mglue[49m([38;5;124m"[39m[38;5;124mlj_fig[39m[38;5;124m"[39m, plt[38;5;241m.[39mshow(), display[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+Input [0;32mIn [3][0m, in [0;36m<module>[0;34m[0m
+[1;32m     17[0m [38;5;66;03m# Interatomic force[39;00m
+[1;32m     18[0m [38;5;66;03m#F = Put your formula[39;00m
+[1;32m     20[0m fig, ax [38;5;241m=[39m plt[38;5;241m.[39msubplots()
+[0;32m---> 21[0m [43max[49m[38;5;241;43m.[39;49m[43mxlim[49m([38;5;241m0.3[39m, [38;5;241m0.8[39m)
+[1;32m     22[0m ax[38;5;241m.[39mylim([38;5;241m-[39m[38;5;241m150[39m, [38;5;241m100[39m)
+[1;32m     24[0m ax[38;5;241m.[39mplot(r, U, [38;5;124m'[39m[38;5;124mk[39m[38;5;124m'[39m, linewidth[38;5;241m=[39m[38;5;241m2[39m,  label[38;5;241m=[39m[38;5;124mr[39m[38;5;124m'[39m[38;5;124mU(r)[39m[38;5;124m'[39m)
 
-[0;31mNameError[0m: name 'glue' is not defined
-NameError: name 'glue' is not defined
+[0;31mAttributeError[0m: 'AxesSubplot' object has no attribute 'xlim'
+AttributeError: 'AxesSubplot' object has no attribute 'xlim'
 

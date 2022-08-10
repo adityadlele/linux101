@@ -1,6 +1,12 @@
 Exercise 1
 ==========
-Use the code below as an example to plot energy of L-J potentials for He, Ne and Kr. Comment on the comparison.
+
+```{admonition} Exercise 1
+Use the code above as an example to a) plot energy of L-J potentials for He, Ne and Kr. Comment on the comparison. b) If the force on the particles
+ is expressed as $F_r=\frac{dV(r)}{dr}$, plot the forces along with potential energy for the above.
+```
+
+Uncomment the line with '##' and fill up the space with your code whereever required.
 
 ```
 # Boltzmann's constant, J/K
@@ -19,23 +25,22 @@ r = np.linspace(0.3, 1, 1000)
 # Interatomic potential
 U = B/r**12 - A/r**6
 # Interatomic force
-F = 12*B/r**13 - 6*A/r**7
+##F = put your code here
 
 line1 = plt.plot(r, U, 'k', lw=2, label=r'U(r)')
 plt.xlim(0.3, 0.8)
 plt.ylim(-150, 100)
 
-plt.twinx()
-line2 = plt.plot(r, F, 'k', ls=':', lw=2, label=r'F(r)')
-plt.xlim(0.3, 0.8)
-plt.ylim(-1000, 1000)
+##plt.twinx()
+##line2 = plt.plot(r, F, 'k', ls=':', lw=2, label=r'F(r)')
+##plt.xlim(0.3, 0.8)
+##plt.ylim(-1000, 1000)
 
-# Jump through some hoops to get the both line's labels in the same legend:
-lines = line1 + line2
-labels = []
-for line in lines:
-    labels.append(line.get_label())
-plt.legend(lines, labels)
+##lines = line1 + line2
+##labels = []
+##for line in lines:
+##    labels.append(line.get_label())
+##plt.legend(lines, labels)
 
 plt.show()
 ```

@@ -48,6 +48,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Exercise 0" href="ex0.html" />
@@ -165,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="lecture4.html">
-     Lecture 3
+     Lecture 4
     </a>
    </li>
   </ul>
@@ -187,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="lecture6.html">
-     Lecture
+     Lecture 6
     </a>
    </li>
   </ul>
@@ -394,7 +396,12 @@ title="Print to PDF"
                 
   <div class="section" id="exercise-1">
 <h1>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h1>
-<p>Use the code below as an example to plot energy of L-J potentials for He, Ne and Kr. Comment on the comparison.</p>
+<div class="admonition-exercise-1 admonition">
+<p class="admonition-title">Exercise 1</p>
+<p>Use the code above as an example to a) plot energy of L-J potentials for He, Ne and Kr. Comment on the comparison. b) If the force on the particles
+is expressed as <span class="math notranslate nohighlight">\(F_r=\frac{dV(r)}{dr}\)</span>, plot the forces along with potential energy for the above.</p>
+</div>
+<p>Uncomment the line with ‘##’ and fill up the space with your code whereever required.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Boltzmann&#39;s constant, J/K</span>
 <span class="n">kB</span> <span class="o">=</span> <span class="mf">1.381e-23</span>
 
@@ -411,23 +418,22 @@ title="Print to PDF"
 <span class="c1"># Interatomic potential</span>
 <span class="n">U</span> <span class="o">=</span> <span class="n">B</span><span class="o">/</span><span class="n">r</span><span class="o">**</span><span class="mi">12</span> <span class="o">-</span> <span class="n">A</span><span class="o">/</span><span class="n">r</span><span class="o">**</span><span class="mi">6</span>
 <span class="c1"># Interatomic force</span>
-<span class="n">F</span> <span class="o">=</span> <span class="mi">12</span><span class="o">*</span><span class="n">B</span><span class="o">/</span><span class="n">r</span><span class="o">**</span><span class="mi">13</span> <span class="o">-</span> <span class="mi">6</span><span class="o">*</span><span class="n">A</span><span class="o">/</span><span class="n">r</span><span class="o">**</span><span class="mi">7</span>
+<span class="c1">##F = put your code here</span>
 
 <span class="n">line1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;U(r)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-<span class="n">line2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;F(r)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="c1">##plt.twinx()</span>
+<span class="c1">##line2 = plt.plot(r, F, &#39;k&#39;, ls=&#39;:&#39;, lw=2, label=r&#39;F(r)&#39;)</span>
+<span class="c1">##plt.xlim(0.3, 0.8)</span>
+<span class="c1">##plt.ylim(-1000, 1000)</span>
 
-<span class="c1"># Jump through some hoops to get the both line&#39;s labels in the same legend:</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="n">line1</span> <span class="o">+</span> <span class="n">line2</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-    <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">get_label</span><span class="p">())</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="c1">##lines = line1 + line2</span>
+<span class="c1">##labels = []</span>
+<span class="c1">##for line in lines:</span>
+<span class="c1">##    labels.append(line.get_label())</span>
+<span class="c1">##plt.legend(lines, labels)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
