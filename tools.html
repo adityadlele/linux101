@@ -46,8 +46,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Molecular dynamics basics" href="md_basics.html" />
@@ -419,13 +417,18 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ovito">
+   OVITO
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#vasp">
    VASP
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reiterating-some-basics">
-     Reiterating some basics
+    <a class="reference internal nav-link" href="#some-basics">
+     Some basics
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -482,13 +485,18 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ovito">
+   OVITO
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#vasp">
    VASP
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reiterating-some-basics">
-     Reiterating some basics
+    <a class="reference internal nav-link" href="#some-basics">
+     Some basics
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -518,10 +526,7 @@ conda create --name myenv &lt;package-1&gt; &lt;package-2&gt; ... &lt;package-N&
 </pre></div>
 </div>
 <p>If you are already familiar with Python or interested in further exploring it use the following <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/python">link</a> for instructions on using Python on Princeton clusters</p>
-<p>We will use Jupyter notebook to access the above conda environment. Please follow the research computing <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/jupyter#ondemand">instructions</a> to run Jupyter on your web-browser. Make a python notebook and name it <em>test</em> with the following code</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Python <span class="nb">test</span>
-</pre></div>
-</div>
+<p>We will use Jupyter notebook to access the above conda environment. Please follow the research computing <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/jupyter#ondemand">instructions</a> to run Jupyter on your web-browser on Adroit.</p>
 </div>
 <div class="section" id="atomistic-simulation-environment-ase">
 <h2>Atomistic simulation environment (ASE)<a class="headerlink" href="#atomistic-simulation-environment-ase" title="Permalink to this headline">¶</a></h2>
@@ -605,10 +610,14 @@ run             <span class="m">10000</span>
 </div>
 </div>
 </div>
+<div class="section" id="ovito">
+<h2>OVITO<a class="headerlink" href="#ovito" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.ovito.org/">OVITO</a> is an easy to use visualization software that can also be used to convert different geometry file formats. You can download and install the free version locally on your computer for visualization.</p>
+</div>
 <div class="section" id="vasp">
 <h2>VASP<a class="headerlink" href="#vasp" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="reiterating-some-basics">
-<h3>Reiterating some basics<a class="headerlink" href="#reiterating-some-basics" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="some-basics">
+<h3>Some basics<a class="headerlink" href="#some-basics" title="Permalink to this headline">¶</a></h3>
 <p>Files used to run VASP calculations</p>
 <ul class="simple">
 <li><p>INCAR: This file describes the input parameters required for different calculations (For example: A molecule will have different parameters than a crystal)</p></li>

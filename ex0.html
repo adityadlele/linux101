@@ -46,8 +46,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Exercise 1" href="ex1.html" />
@@ -406,11 +404,6 @@ title="Print to PDF"
    Part 3: LAMMPS
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-4-vasp">
-   Part 4: VASP
-  </a>
- </li>
 </ul>
 
     </nav>
@@ -445,11 +438,6 @@ title="Print to PDF"
    Part 3: LAMMPS
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-4-vasp">
-   Part 4: VASP
-  </a>
- </li>
 </ul>
 
                         </nav>
@@ -472,7 +460,7 @@ title="Print to PDF"
 <h2>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Go to your <em>network</em> directory and create a directory called <em>ex0</em></p></li>
-<li><p>Create the following subdirectories inside the <em>ex0</em> directory: vasp,lammps,ase</p></li>
+<li><p>Create the following subdirectories inside the <em>ex0</em> directory: lammps,ase</p></li>
 </ol>
 <p>You will excute small simulations in each of the above subdirectories</p>
 </div>
@@ -524,9 +512,9 @@ write(&#39;al2o321.xyz&#39;,gAl2O3_110)
 </ol>
 <p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">ase.py</span></code></p>
 <ol class="simple">
-<li><p>Download the <em>al2o321.xyz</em> file and visualize it using OVITO.</p></li>
+<li><p>Download the <em>al2o321.xyz</em> file and visualize it using OVITO. (You can access your files using files tab <a class="reference external" href="https://myadroit.princeton.edu">here</a>)</p></li>
 </ol>
-<p>Submit an image generated using OVITO showing the top and two side views of the structure in the downloaded file.</p>
+<p>Create an image using OVITO showing the top and two side views of the structure in the downloaded file.</p>
 </div>
 <div class="section" id="part-3-lammps">
 <h2>Part 3: LAMMPS<a class="headerlink" href="#part-3-lammps" title="Permalink to this headline">¶</a></h2>
@@ -578,7 +566,7 @@ module load intel/19.1.1.217
 module load intel-mpi/intel/2019.7
 <span class="nb">export</span> <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
 
-srun <span class="nv">$HOME</span>/.local/bin/lmp_adroit -in <span class="k">in</span>.melt
+srun /home/al9001/.local/bin/lmp_adroit -in <span class="k">in</span>.lammps
 </pre></div>
 </div>
 <ol class="simple">
@@ -587,11 +575,8 @@ srun <span class="nv">$HOME</span>/.local/bin/lmp_adroit -in <span class="k">in<
 <p><code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">job.slurm</span></code></p>
 <p>You can take a look at <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/slurm">this</a> guide to learn more about job monitoring.</p>
 <ol class="simple">
-<li><p>Plot the potential energy as a function of time using GNUPLOT</p></li>
+<li><p>Plot the potential energy as a function of time using <a class="reference external" href="http://www.gnuplot.info/">gnuplot</a> or Python.</p></li>
 </ol>
-</div>
-<div class="section" id="part-4-vasp">
-<h2>Part 4: VASP<a class="headerlink" href="#part-4-vasp" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

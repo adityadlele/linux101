@@ -9,13 +9,7 @@ conda create --name myenv <package-1> <package-2> ... <package-N>
 ```
 If you are already familiar with Python or interested in further exploring it use the following [link](https://researchcomputing.princeton.edu/support/knowledge-base/python) for instructions on using Python on Princeton clusters 
 
-We will use Jupyter notebook to access the above conda environment. Please follow the research computing [instructions](https://researchcomputing.princeton.edu/support/knowledge-base/jupyter#ondemand) to run Jupyter on your web-browser. Make a python notebook and name it *test* with the following code 
-
-   
-
-```sh
-Python test
-```
+We will use Jupyter notebook to access the above conda environment. Please follow the research computing [instructions](https://researchcomputing.princeton.edu/support/knowledge-base/jupyter#ondemand) to run Jupyter on your web-browser on Adroit.
 
 
 ## Atomistic simulation environment (ASE)
@@ -102,9 +96,16 @@ thermo          5000
 run             10000
 ```
 
+
+## OVITO
+
+[OVITO](https://www.ovito.org/) is an easy to use visualization software that can also be used to convert different geometry file formats. You can download and install the free version locally on your computer for visualization.
+
+
+
 ## VASP
 
-### Reiterating some basics 
+### Some basics 
 
 Files used to run VASP calculations
 - INCAR: This file describes the input parameters required for different calculations (For example: A molecule will have different parameters than a crystal)

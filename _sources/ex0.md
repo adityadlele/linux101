@@ -8,7 +8,7 @@ Exercise 0
 
 ## Part 1
 1. Go to your *network* directory and create a directory called *ex0*
-2. Create the following subdirectories inside the *ex0* directory: vasp,lammps,ase
+2. Create the following subdirectories inside the *ex0* directory: lammps,ase
 
 You will excute small simulations in each of the above subdirectories
 ## Part 2: ASE
@@ -49,9 +49,9 @@ You will have to perfrom the two steps above every time you want to excute a pyt
 
 `python ase.py`
 
-4. Download the *al2o321.xyz* file and visualize it using OVITO. 
+4. Download the *al2o321.xyz* file and visualize it using OVITO. (You can access your files using files tab [here]( https://myadroit.princeton.edu))
 
-Submit an image generated using OVITO showing the top and two side views of the structure in the downloaded file.
+Create an image using OVITO showing the top and two side views of the structure in the downloaded file.
 
 ## Part 3: LAMMPS
 1. Copy the following code to a file named in.lammps
@@ -101,7 +101,7 @@ module load intel/19.1.1.217
 module load intel-mpi/intel/2019.7
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-srun $HOME/.local/bin/lmp_adroit -in in.melt
+srun /home/al9001/.local/bin/lmp_adroit -in in.lammps
 ```
 3. Excecute the job using the command
 
@@ -109,6 +109,4 @@ srun $HOME/.local/bin/lmp_adroit -in in.melt
 
 You can take a look at [this](https://researchcomputing.princeton.edu/support/knowledge-base/slurm) guide to learn more about job monitoring.
 
-4. Plot the potential energy as a function of time using GNUPLOT
-
-## Part 4: VASP
+4. Plot the potential energy as a function of time using [gnuplot](http://www.gnuplot.info/) or Python.

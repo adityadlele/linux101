@@ -1,7 +1,7 @@
 Exercise 1
 ==========
 
-```{admonition} Exercise 1
+```{admonition} Question 1
 Use the code above as an example to a) plot energy of L-J potentials for He, Ne and Kr. Comment on the comparison. b) If the force on the particles
  is expressed as $F_r=\frac{dV(r)}{dr}$, plot the forces along with potential energy for the above.
 ```
@@ -44,3 +44,8 @@ plt.ylim(-150, 100)
 
 plt.show()
 ```
+
+```{admonition} Question 2
+What would happen if we do not include the repulsion part of the LJ potential?
+```
+
