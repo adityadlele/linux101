@@ -1,4 +1,12 @@
 Lecture 3
 =========
 
-TBD
+## Post-processing
+
+## Visualization
+
+## Statistical uncertainities
+
+## Does it make logical sense?
+
+## Training of potentials

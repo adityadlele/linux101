@@ -1,4 +1,10 @@
 Lecture 4
 =========
 
-TBD
+## Crystal structures
+
+## Amorphous materials
+
+## Interfaces
+
+

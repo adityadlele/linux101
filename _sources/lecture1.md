@@ -17,13 +17,13 @@ Lecture 1
 =========
 ## Molecular dynamics simulations
 
-Molecular dynamics simulations typically refere to computer simulations of molecular motion. We are mainly going to discuss classical reactive molecular
-dynamics in this class. The classical part of this name referes to emipirical potentials that drive the motion of atoms using Newtons classical laws of 
+Molecular dynamics simulations typically refer to computer simulations of molecular motion. We are mainly going to discuss classical reactive molecular
+dynamics in this class. The classical part of this name refers to empirical potentials that drive the motion of atoms using Newtons classical laws of 
 motion. These empirical potentials can either describe non-reactive or reactive processes governed by molecular motion. We are largely going to stick to
-reactive molecular molecular dynamics simulations, specifically ReaxFF potential. 
+reactive molecular dynamics simulations, specifically ReaxFF potential. 
 
 Chemical reactive events are ubiquitous in nature. These events govern many aspects of our lives, from energy generating combustion reactions to 
-metabolism. These events span several thermodynamic and time scales. Computationally studying and modelling these reaction events is a major asset
+metabolism. These events span several thermodynamic and time scales. Computationally studying and modeling these reaction events is a major asset
  in our quest to understand the world that we live in. A variety of methods, ranging from the quantum chemistry studies of reactions to continuum 
 scale simulations of reactive processes, are available to study reaction chemistry. The first principle or quantum chemistry (QC) methods delve into 
 the atomic world, describing electronic structures and associated useful properties used to characterize a reaction event. However, these methods 
@@ -40,11 +40,11 @@ chemistry without explicit QC consideration. This puts ReaxFF in a unique positi
 molecules while approaching the accuracy of the QC methods.
 
 ## What is an interatomic potential?
-To understand the atomic motion, we first need to understand the forces and energies among these atoms. Imagine a car driving on a straight road. 
+To understand the atomic motion, we first need to understand the forces and energies between these atoms. Imagine a car driving on a straight road. 
 The position of the car as a function of time can be determined using Newtons laws of motion. However, to determine the velocity or acceleration 
 of the vehicle, we also need to calculate the energy produced by the engine as a function of time. This energy would be a function of fuel intake, 
-wnd resistance and several other factors. Similarly, a molecular dynamics potential defines the energy of the system as a function of interatomic 
-distances and configurations. These interatomc potential are the driving engine of the molecular dynamics simulations.
+wind resistance and several other factors. Similarly, a molecular dynamics potential defines the energy of the system as a function of interatomic 
+distances and configurations. These interatomic potential are the driving engines of the molecular dynamics simulations.
 
 The form of the interatomic potential depends on the application it has been developed for. Let us consider the example of an inert gas. Assume that
 we want to model the motion of an inert gas and derive useful properties such as its density as a function of temperature and pressure. Given that 
@@ -165,15 +165,10 @@ L-J potential for Ar gas.
 ```
 
 
-```{admonition} Exercise 1
-Use the code above as an example to a) plot energy of L-J potentials for He, Ne and Kr. Comment on the comparison. b) If the force on the particles
- is expressed as $F_r=\frac{dV(r)}{dr}$, plot the forces along with potential energy for the above.
-```
-
 ## Anatomy of an MD code
 
 So how do we model the motion of the molecules using the interatomic potential. This task is performed by numerous MD codes (such as LAMMPS), 
-most of which have following aspects as a part of them. The codes typically start by intialting positions and velocities for the particles based
+most of which have following aspects as a part of them. The codes typically start by initiating positions and velocities for the particles based
 on user defined directives. These properties are then used to determine interatomic forces between the particles. The forces,positions and 
 velocities are then used to solve Newton's equations of motion numerically. The numerical equation detrmines the updated positions of the particles
 after a small but finite time (time-step). The old and new positions can then be used to detrmine the new velocities. This cycle is continued for 
@@ -260,4 +255,8 @@ dyn.attach(traj.write, interval=50)
 printenergy()
 dyn.run(200)
 ```
+
+## Sample LAMMPS run
+
+Let us run the same simulation with LAMMPS and compare the results.
 

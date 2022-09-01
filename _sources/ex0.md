@@ -12,7 +12,7 @@ Exercise 0
 
 You will excute small simulations in each of the above subdirectories
 ## Part 2: ASE
-1. Copy the following code to a file named ase.py
+1. Copy the following code to a file named test.py
 ```
 from ase.spacegroup import crystal
 from ase.visualize import view
@@ -21,29 +21,26 @@ from ase import Atoms
 import numpy as np
 from ase.io import read, write
 
-#Create a crystal
 gAl2O3 = crystal(['Al','Al','Al',
                  'Al','Al','Al',
                  'O','O','O','O',
                  'O','O','O','O'],
-                 basis=[(0.377,3./4.,0.126),(0.868,1./4.,0.498),(0.875,3./4.,0.125),(0.615,3./4.,0.745),(0.367,0.075,0.612),(0.116,0.579,0.862),(0.881,3./4$                 spacegroup=11,
+                 basis=[(0.377,3./4.,0.126),(0.868,1./4.,0.498),(0.875,3./4.,0.125),(0.615,3./4.,0.745),(0.367,0.075,0.612),(0.116,0.579,0.862),(0.881,3./4.,0.874),(0.614,1./4.,0.640),(0.364,3./4.,0.889),(0.132,1./4.,0.627),(0.889,0.406,0.899),(0.605,0.917,0.614),(0.357,0.406,0.853),(0.138,0.916,0.637)],
+                 spacegroup=11,
                  cellpar=[5.577, 8.401, 8.069, 90, 90.59, 90])
 gAl2O3_110 = surface(gAl2O3, (1, 0, 0), 2)
 
-#Expand the surface
-gAl2O3_110 = gAl2O3_110.repeat((2,1,1))
+gAl2O3_110 = gAl2O3_110.repeat((4,2,1))
 
-#remove excess top
 del gAl2O3_110[gAl2O3_110.positions[:, 2] > 8.9]
 
-write('al2o321.xyz',gAl2O3_110)
-
+write('al2o3.xyz',gAl2O3_110)
 ```
 2. Activate the python environment using following two commands
 	* `module load anaconda3/2021.11`
 	* `conda activate ase`
 ```{note}
-You will have to perfrom the two steps above every time you want to excute a python script
+You will have to perform the two steps above every time you want to excute a python script
 ```
 3. Execute the file using the following command inside the folder ase  
 

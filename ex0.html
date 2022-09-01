@@ -46,6 +46,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Exercise 1" href="ex1.html" />
@@ -467,32 +469,29 @@ title="Print to PDF"
 <div class="section" id="part-2-ase">
 <h2>Part 2: ASE<a class="headerlink" href="#part-2-ase" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>Copy the following code to a file named <a class="reference external" href="http://ase.py">ase.py</a></p></li>
+<li><p>Copy the following code to a file named <a class="reference external" href="http://test.py">test.py</a></p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>from ase.spacegroup import crystal
-from ase.visualize import view
-from ase.build import surface
-from ase import Atoms
-import numpy as np
-from ase.io import read, write
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ase.spacegroup</span> <span class="kn">import</span> <span class="n">crystal</span>
+<span class="kn">from</span> <span class="nn">ase.visualize</span> <span class="kn">import</span> <span class="n">view</span>
+<span class="kn">from</span> <span class="nn">ase.build</span> <span class="kn">import</span> <span class="n">surface</span>
+<span class="kn">from</span> <span class="nn">ase</span> <span class="kn">import</span> <span class="n">Atoms</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">ase.io</span> <span class="kn">import</span> <span class="n">read</span><span class="p">,</span> <span class="n">write</span>
 
-#Create a crystal
-gAl2O3 = crystal([&#39;Al&#39;,&#39;Al&#39;,&#39;Al&#39;,
-                 &#39;Al&#39;,&#39;Al&#39;,&#39;Al&#39;,
-                 &#39;O&#39;,&#39;O&#39;,&#39;O&#39;,&#39;O&#39;,
-                 &#39;O&#39;,&#39;O&#39;,&#39;O&#39;,&#39;O&#39;],
-                 basis=[(0.377,3./4.,0.126),(0.868,1./4.,0.498),(0.875,3./4.,0.125),(0.615,3./4.,0.745),(0.367,0.075,0.612),(0.116,0.579,0.862),(0.881,3./4$                 spacegroup=11,
-                 cellpar=[5.577, 8.401, 8.069, 90, 90.59, 90])
-gAl2O3_110 = surface(gAl2O3, (1, 0, 0), 2)
+<span class="n">gAl2O3</span> <span class="o">=</span> <span class="n">crystal</span><span class="p">([</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;Al&#39;</span><span class="p">,</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;O&#39;</span><span class="p">,</span><span class="s1">&#39;O&#39;</span><span class="p">,</span><span class="s1">&#39;O&#39;</span><span class="p">,</span><span class="s1">&#39;O&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;O&#39;</span><span class="p">,</span><span class="s1">&#39;O&#39;</span><span class="p">,</span><span class="s1">&#39;O&#39;</span><span class="p">,</span><span class="s1">&#39;O&#39;</span><span class="p">],</span>
+                 <span class="n">basis</span><span class="o">=</span><span class="p">[(</span><span class="mf">0.377</span><span class="p">,</span><span class="mf">3.</span><span class="o">/</span><span class="mf">4.</span><span class="p">,</span><span class="mf">0.126</span><span class="p">),(</span><span class="mf">0.868</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mf">4.</span><span class="p">,</span><span class="mf">0.498</span><span class="p">),(</span><span class="mf">0.875</span><span class="p">,</span><span class="mf">3.</span><span class="o">/</span><span class="mf">4.</span><span class="p">,</span><span class="mf">0.125</span><span class="p">),(</span><span class="mf">0.615</span><span class="p">,</span><span class="mf">3.</span><span class="o">/</span><span class="mf">4.</span><span class="p">,</span><span class="mf">0.745</span><span class="p">),(</span><span class="mf">0.367</span><span class="p">,</span><span class="mf">0.075</span><span class="p">,</span><span class="mf">0.612</span><span class="p">),(</span><span class="mf">0.116</span><span class="p">,</span><span class="mf">0.579</span><span class="p">,</span><span class="mf">0.862</span><span class="p">),(</span><span class="mf">0.881</span><span class="p">,</span><span class="mf">3.</span><span class="o">/</span><span class="mf">4.</span><span class="p">,</span><span class="mf">0.874</span><span class="p">),(</span><span class="mf">0.614</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mf">4.</span><span class="p">,</span><span class="mf">0.640</span><span class="p">),(</span><span class="mf">0.364</span><span class="p">,</span><span class="mf">3.</span><span class="o">/</span><span class="mf">4.</span><span class="p">,</span><span class="mf">0.889</span><span class="p">),(</span><span class="mf">0.132</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mf">4.</span><span class="p">,</span><span class="mf">0.627</span><span class="p">),(</span><span class="mf">0.889</span><span class="p">,</span><span class="mf">0.406</span><span class="p">,</span><span class="mf">0.899</span><span class="p">),(</span><span class="mf">0.605</span><span class="p">,</span><span class="mf">0.917</span><span class="p">,</span><span class="mf">0.614</span><span class="p">),(</span><span class="mf">0.357</span><span class="p">,</span><span class="mf">0.406</span><span class="p">,</span><span class="mf">0.853</span><span class="p">),(</span><span class="mf">0.138</span><span class="p">,</span><span class="mf">0.916</span><span class="p">,</span><span class="mf">0.637</span><span class="p">)],</span>
+                 <span class="n">spacegroup</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
+                 <span class="n">cellpar</span><span class="o">=</span><span class="p">[</span><span class="mf">5.577</span><span class="p">,</span> <span class="mf">8.401</span><span class="p">,</span> <span class="mf">8.069</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mf">90.59</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
+<span class="n">gAl2O3_110</span> <span class="o">=</span> <span class="n">surface</span><span class="p">(</span><span class="n">gAl2O3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 
-#Expand the surface
-gAl2O3_110 = gAl2O3_110.repeat((2,1,1))
+<span class="n">gAl2O3_110</span> <span class="o">=</span> <span class="n">gAl2O3_110</span><span class="o">.</span><span class="n">repeat</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 
-#remove excess top
-del gAl2O3_110[gAl2O3_110.positions[:, 2] &gt; 8.9]
+<span class="k">del</span> <span class="n">gAl2O3_110</span><span class="p">[</span><span class="n">gAl2O3_110</span><span class="o">.</span><span class="n">positions</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">8.9</span><span class="p">]</span>
 
-write(&#39;al2o321.xyz&#39;,gAl2O3_110)
-
+<span class="n">write</span><span class="p">(</span><span class="s1">&#39;al2o3.xyz&#39;</span><span class="p">,</span><span class="n">gAl2O3_110</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="simple">
@@ -505,7 +504,7 @@ write(&#39;al2o321.xyz&#39;,gAl2O3_110)
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You will have to perfrom the two steps above every time you want to excute a python script</p>
+<p>You will have to perform the two steps above every time you want to excute a python script</p>
 </div>
 <ol class="simple">
 <li><p>Execute the file using the following command inside the folder ase</p></li>

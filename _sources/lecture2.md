@@ -78,3 +78,11 @@ Visual representation of different ensembles. (source: Wikipedia)
 ```
 
 ## Interatomic potentials
+## Setting up your simulation
+## Energy minimization
+## Other aspects
+### Equilibration
+### Simulated annealing
+
+
+
