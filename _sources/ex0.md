@@ -44,7 +44,7 @@ You will have to perform the two steps above every time you want to excute a pyt
 ```
 3. Execute the file using the following command inside the folder ase  
 
-`python ase.py`
+`python test.py`
 
 4. Download the *al2o321.xyz* file and visualize it using OVITO. (You can access your files using files tab [here]( https://myadroit.princeton.edu))
 
