@@ -75,7 +75,7 @@ fix             2 all langevin 1.0 1.0 1.0 48279
 
 timestep        0.005
 
-thermo          5000
+thermo          500
 run             10000
 ```
 
@@ -106,4 +106,4 @@ srun /home/al9001/.local/bin/lmp_adroit -in in.lammps
 
 You can take a look at [this](https://researchcomputing.princeton.edu/support/knowledge-base/slurm) guide to learn more about job monitoring.
 
-4. Plot the potential energy as a function of time using [gnuplot](http://www.gnuplot.info/) or Python.
+4. Plot the energy as a function of time using [gnuplot](http://www.gnuplot.info/) or Python. You can use log.lammps file.

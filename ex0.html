@@ -540,7 +540,7 @@ fix             <span class="m">2</span> all langevin <span class="m">1</span>.0
 
 timestep        <span class="m">0</span>.005
 
-thermo          <span class="m">5000</span>
+thermo          <span class="m">500</span>
 run             <span class="m">10000</span>
 </pre></div>
 </div>
@@ -572,7 +572,7 @@ srun /home/al9001/.local/bin/lmp_adroit -in <span class="k">in</span>.lammps
 <p><code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">job.slurm</span></code></p>
 <p>You can take a look at <a class="reference external" href="https://researchcomputing.princeton.edu/support/knowledge-base/slurm">this</a> guide to learn more about job monitoring.</p>
 <ol class="simple">
-<li><p>Plot the potential energy as a function of time using <a class="reference external" href="http://www.gnuplot.info/">gnuplot</a> or Python.</p></li>
+<li><p>Plot the energy as a function of time using <a class="reference external" href="http://www.gnuplot.info/">gnuplot</a> or Python. You can use log.lammps file.</p></li>
 </ol>
 </div>
 </div>
