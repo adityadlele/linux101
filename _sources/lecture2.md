@@ -78,11 +78,70 @@ Visual representation of different ensembles. (source: Wikipedia)
 ```
 
 ## Interatomic potentials
+We used the L-J potential to calculate density of an inert gas. It described the energy between a pair of particles as a function of interatomic distance.
+This description is well and good for monoatomic species or when representation of a species as hard sphere is sufficient. Realistically, a large number of 
+problems involve complex molecules. These complex molecules need the description of bonds, angles and dihedrals. The complex shapes also mean that we need to consider
+rotational and vibrational motion along with traslational motion. Also, physical systems involve more complex interactions. Strong interactions such as covalent, metallic
+ and ionic bonding are necessary to capture the reactivity of the system. Additionally, we also need to consider weak interactions such as hydrogen bonds, permanent dipoles
+and vdWaals interactions. Including all these interactions naturally leads to a complex form of classical potential. Listed below are different bonded and non-bonded interactions
+typically considered in interatomic potentials
+
+### Bond stretch
+
+At finite temperautres, bonded atoms vibrate or chemical bond lengths deviate from their equilibrium values. These vibrations typically
+occur at certain frequencies characteristic to the different vibrational excitation levels for the bond. The vibrational ecitations also
+increase the energy of the bond. After reaching sufficiently high energy (bond dissociation energy), the bond would eventually break. If
+interested in non-reactive application, the vibrational motion can be approximated sufficiently by harmonic approximation. For example, the
+energy of the HCl molecular bond can be reasonably approximated upto $E_2$ or $E_3$ by the following expresion
+
++++
+
+$$
+U(r_{HCl})=\frac{1}{2} k_{HCl}(r_{HCl}-r_{HCl.eq})^2
+$$
+
++++
+
+As $r_{HCl}\rightarrow\infty$,$U(r_{HCl})\rightarrow\infty$. Hence, this expression will not be able to express the breaking of the bond though.
+A better approximation is represented by Morse potential defined below. A lot of the non-reactive force fields still use either harmonic approximation
+or it's modified form by including quadratic term in the equation above. The reason for this is the higher computational cost of calculating exponential.
+
++++
+
+$$
+U(r_{HCl})=D_{HCl}[1-e^{-\alpha_{HCl}(r_{HCl}-r_{HCl.eq})}]^2
+$$
+
++++
+
+
+
+```{figure} ./images/Anharmonic_oscillator.gif
+---
+height: 300px
+name: bond_stretch
+---
+Molecular vibration of HCl. (source: Wikipedia)
+```
+
+
 ## Setting up your simulation
-## Energy minimization
-## Other aspects
+Now that we have covered basic concepts behind molecular dynamics simulations, let us see how one can set-up a molecular dynamics
+simulation. We are discussing this topic here in a general sense. You need to ask yourself several questions before spending your
+valuable computational time on these simulations.
+	
+1. What do you want to simulate?
+2. What accuracy do you desire?
+3. What is the appropriate MD potential/method?
+4. Finally, What is the appropriate MD simulation?
+
+Once you answer these questions, your typical simulation setup will start with generating the desired geometry for the system. We already
+tested this using ASE in excersize 0. 
+### Geometry generation
+### Energy minimization
 ### Equilibration
 ### Simulated annealing
+### Production run
 
 
 

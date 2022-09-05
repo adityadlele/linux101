@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -453,22 +454,29 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#interatomic-potentials">
    Interatomic potentials
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bond-stretch">
+     Bond stretch
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#setting-up-your-simulation">
    Setting up your simulation
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#energy-minimization">
-   Energy minimization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-aspects">
-   Other aspects
-  </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geometry-generation">
+     Geometry generation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#energy-minimization">
+     Energy minimization
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#equilibration">
      Equilibration
@@ -477,6 +485,11 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#simulated-annealing">
      Simulated annealing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#production-run">
+     Production run
     </a>
    </li>
   </ul>
@@ -514,22 +527,29 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#interatomic-potentials">
    Interatomic potentials
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bond-stretch">
+     Bond stretch
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#setting-up-your-simulation">
    Setting up your simulation
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#energy-minimization">
-   Energy minimization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-aspects">
-   Other aspects
-  </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geometry-generation">
+     Geometry generation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#energy-minimization">
+     Energy minimization
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#equilibration">
      Equilibration
@@ -538,6 +558,11 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#simulated-annealing">
      Simulated annealing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#production-run">
+     Production run
     </a>
    </li>
   </ul>
@@ -604,20 +629,64 @@ observing unphysical effects. Similar effect can be achived for pressure by usin
 </div>
 <div class="section" id="interatomic-potentials">
 <h2>Interatomic potentials<a class="headerlink" href="#interatomic-potentials" title="Permalink to this headline">¶</a></h2>
+<p>We used the L-J potential to calculate density of an inert gas. It described the energy between a pair of particles as a function of interatomic distance.
+This description is well and good for monoatomic species or when representation of a species as hard sphere is sufficient. Realistically, a large number of
+problems involve complex molecules. These complex molecules need the description of bonds, angles and dihedrals. The complex shapes also mean that we need to consider
+rotational and vibrational motion along with traslational motion. Also, physical systems involve more complex interactions. Strong interactions such as covalent, metallic
+and ionic bonding are necessary to capture the reactivity of the system. Additionally, we also need to consider weak interactions such as hydrogen bonds, permanent dipoles
+and vdWaals interactions. Including all these interactions naturally leads to a complex form of classical potential. Listed below are different bonded and non-bonded interactions
+typically considered in interatomic potentials</p>
+<div class="section" id="bond-stretch">
+<h3>Bond stretch<a class="headerlink" href="#bond-stretch" title="Permalink to this headline">¶</a></h3>
+<p>At finite temperautres, bonded atoms vibrate or chemical bond lengths deviate from their equilibrium values. These vibrations typically
+occur at certain frequencies characteristic to the different vibrational excitation levels for the bond. The vibrational ecitations also
+increase the energy of the bond. After reaching sufficiently high energy (bond dissociation energy), the bond would eventually break. If
+interested in non-reactive application, the vibrational motion can be approximated sufficiently by harmonic approximation. For example, the
+energy of the HCl molecular bond can be reasonably approximated upto <span class="math notranslate nohighlight">\(E_2\)</span> or <span class="math notranslate nohighlight">\(E_3\)</span> by the following expresion</p>
+<div class="math notranslate nohighlight">
+\[
+U(r_{HCl})=\frac{1}{2} k_{HCl}(r_{HCl}-r_{HCl.eq})^2
+\]</div>
+<p>As <span class="math notranslate nohighlight">\(r_{HCl}\rightarrow\infty\)</span>,<span class="math notranslate nohighlight">\(U(r_{HCl})\rightarrow\infty\)</span>. Hence, this expression will not be able to express the breaking of the bond though.
+A better approximation is represented by Morse potential defined below. A lot of the non-reactive force fields still use either harmonic approximation
+or it’s modified form by including quadratic term in the equation above. The reason for this is the higher computational cost of calculating exponential.</p>
+<div class="math notranslate nohighlight">
+\[
+U(r_{HCl})=D_{HCl}[1-e^{-\alpha_{HCl}(r_{HCl}-r_{HCl.eq})}]^2
+\]</div>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="_images/Anharmonic_oscillator.gif"><img alt="_images/Anharmonic_oscillator.gif" src="_images/Anharmonic_oscillator.gif" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Molecular vibration of HCl. (source: Wikipedia)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div>
 </div>
 <div class="section" id="setting-up-your-simulation">
 <h2>Setting up your simulation<a class="headerlink" href="#setting-up-your-simulation" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have covered basic concepts behind molecular dynamics simulations, let us see how one can set-up a molecular dynamics
+simulation. We are discussing this topic here in a general sense. You need to ask yourself several questions before spending your
+valuable computational time on these simulations.</p>
+<ol class="simple">
+<li><p>What do you want to simulate?</p></li>
+<li><p>What accuracy do you desire?</p></li>
+<li><p>What is the appropriate MD potential/method?</p></li>
+<li><p>Finally, What is the appropriate MD simulation?</p></li>
+</ol>
+<p>Once you answer these questions, your typical simulation setup will start with generating the desired geometry for the system. We already
+tested this using ASE in excersize 0.</p>
+<div class="section" id="geometry-generation">
+<h3>Geometry generation<a class="headerlink" href="#geometry-generation" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="energy-minimization">
-<h2>Energy minimization<a class="headerlink" href="#energy-minimization" title="Permalink to this headline">¶</a></h2>
+<h3>Energy minimization<a class="headerlink" href="#energy-minimization" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="other-aspects">
-<h2>Other aspects<a class="headerlink" href="#other-aspects" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="equilibration">
 <h3>Equilibration<a class="headerlink" href="#equilibration" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="simulated-annealing">
 <h3>Simulated annealing<a class="headerlink" href="#simulated-annealing" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="production-run">
+<h3>Production run<a class="headerlink" href="#production-run" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>

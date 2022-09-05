@@ -185,6 +185,72 @@ Simplified structure of a typical MD code.
 ```
 
 
+### MD pseudo-code
+
+```{code-cell} ipython3
+
+
+#Intialize the code
+intialize the code
+t=0
+#MD loop
+
+do loop while (t=0 to t=t$_{max}$)
+	#Calculate forces
+	cal forces(xyz, t=t$_n$)
+	#Calculate equations of motion
+	cal motion(xyz, t=t$_n$)
+	t=t+dt
+	# Calculate properties
+	cal property(xyz, t=t$_n$)
+end loop
+end
+```
+
+### Initialization
+
+```{code-cell} ipython3
+function intialization
+do from i=0 to i=no. of particles
+	xyz(i)=position of particle i
+	v(i)=rand_vel
+	ke(i)=0.5*mass*v(i)**2
+end loop
+
+```
+
+### Force calculation
+
+```{code-cell} ipython3
+function force_and_energy_calculation
+do from i=0 to i=no. of particles
+	f(i)=0 #initialize forces to 0
+end loop
+
+do from i=0 to i=no. of particles
+	do from j=0 to j=no. of particles
+		xr=x(i)-x(j)
+		if xr is less than cutoff
+		  force=force_equation(e.g. LJ force equation)
+		  updated_force=f(i)+force
+		  updated_energy=energy_equation
+		end if condition
+	end loop
+end loop
+
+```
+
+### Equations of motion
+
+```{code-cell} ipython3
+function integrate equations of motion
+
+do from i=0 to i=no. of particles
+	xx=2*x(i)-xm(i)+dt^2*2f(i) #verlet algorithm
+	v(i)=(xx-xm(i))/(2dt) #new velocity
+	xm(i)=x(i) #undate positions
+end loop
+```
 
 ## The MD run
 
