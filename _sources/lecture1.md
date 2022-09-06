@@ -165,7 +165,7 @@ L-J potential for Ar gas.
 ```
 
 
-## Anatomy of an MD code
+## Anatomy of a MD code
 
 So how do we model the motion of the molecules using the interatomic potential. This task is performed by numerous MD codes (such as LAMMPS), 
 most of which have following aspects as a part of them. The codes typically start by initiating positions and velocities for the particles based
@@ -187,7 +187,7 @@ Simplified structure of a typical MD code.
 
 ### MD pseudo-code
 
-```{code-cell} ipython3
+```sh
 
 
 #Intialize the code
@@ -209,7 +209,7 @@ end
 
 ### Initialization
 
-```{code-cell} ipython3
+```sh
 function intialization
 do from i=0 to i=no. of particles
 	xyz(i)=position of particle i
@@ -221,7 +221,7 @@ end loop
 
 ### Force calculation
 
-```{code-cell} ipython3
+```sh
 function force_and_energy_calculation
 do from i=0 to i=no. of particles
 	f(i)=0 #initialize forces to 0
@@ -242,7 +242,7 @@ end loop
 
 ### Equations of motion
 
-```{code-cell} ipython3
+```sh
 function integrate equations of motion
 
 do from i=0 to i=no. of particles
@@ -326,3 +326,33 @@ dyn.run(200)
 
 Let us run the same simulation with LAMMPS and compare the results.
 
+```sh
+units           real
+atom_style      atomic
+
+
+read_data       ar.data
+
+velocity        all create 1.0 87287
+
+pair_style      lj/cut 2.5
+pair_coeff      1 1 1.0 1.0 2.5
+
+neighbor        0.3 bin
+neigh_modify    every 20 delay 0 check no
+
+fix             1 all npt temp 95.0 95.0 100.0 iso 1.0 1.0 1000.0
+
+
+
+
+timestep        0.25
+
+thermo          100
+thermo_style    custom step pe ke etotal temp press vol density
+thermo_modify   format float %15.14g
+
+dump             1 all custom 500 dump.ar id type x y z
+
+run             500000
+```
