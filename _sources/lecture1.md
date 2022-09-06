@@ -265,43 +265,50 @@ generally considered to mark the beginnings of the molecular dynamics method. Yo
 original paper [here](https://journals.aps.org/pr/abstract/10.1103/PhysRev.136.A405).
 
 
-```{code-cell} ipython3
+```sh
 from ase import Atoms, units
 from ase.visualize import view
 from ase.calculators.lj import LennardJones
 from ase.md.velocitydistribution import MaxwellBoltzmannDistribution
 from ase.md.verlet import VelocityVerlet
 from ase.md.langevin import Langevin
+from ase.md.nptberendsen import NPTBerendsen 
 from ase.io.trajectory import Trajectory
 from ase.optimize.minimahopping import MinimaHopping
 from ase_notebook import AseView, ViewConfig, get_example_atoms
 from ase.io import read, write, lammpsrun
-from ase import units
+from ase import units 
+import numpy as np
+import matplotlib.pyplot as plt
+from ase.visualize import view
 ```
 
 Let us first define the simulation box geometry.
 
-```{code-cell} ipython3
+```sh
 config = ViewConfig()
 ase_view = AseView(config)
-atoms=read('/home/al9001/Ar.xyz')
-#view(atoms, viewer='ngl')
-ase_view.config.canvas_color_background = "blue"
-ase_view.config.canvas_background_opacity = 0.2
-gui = ase_view.make_render(
-    atoms, center_in_uc=True)
-gui
+```
 
+```sh
+atoms=read('/home/al9001/Ar.xyz')
+```
+
+```sh
+view(atoms, viewer='x3d')
 ```
 
 Run a sample MD simulation.
 
-```{code-cell} ipython3
+```sh
+%%time
 atoms.calc = LennardJones(sigma=0.34,epsilon=1.657E-21,rc=3.4)
-MaxwellBoltzmannDistribution(atoms, temp=0.00814)
-T = 94.4  # Kelvin
+MaxwellBoltzmannDistribution(atoms, temperature_K=95)
+#T = 94.4  # Kelvin
 
-dyn = Langevin(atoms, 0.1*units.fs, T*units.kB, 0.002)
+dyn = NPTBerendsen(atoms, timestep=0.1 * units.fs, temperature_K=95,
+                   taut=100 * units.fs, pressure_au=1.01325 * units.bar,
+                   taup=1000 * units.fs, compressibility=4.57e-5 / units.bar)
 
 def printenergy(a=atoms):  # store a reference to atoms in the definition.
     """Function to print the potential, kinetic and total energy."""

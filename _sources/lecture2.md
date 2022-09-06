@@ -17,7 +17,7 @@ Lecture 2
 =========
 ## Ergodic hypothesis
 
-We discussed an MD simulation related to liquid Ar previously. In this simulations, we modeled Ar liquid at 85 K using XYZ atoms. If you consider a
+We discussed a MD simulation related to liquid Ar previously. In this simulations, we modeled Ar liquid at 95 K using ~900 atoms. If you consider a
 vessel full of liquid Ar with a volume of 10$^{-3}$ $m^3$, it will contain 1.4096 kg of Ar or 2.125*10$^{25}$ Ar atoms. Considering that this is a fluid,
 the arrangement of atoms is not periodic either. These atoms could arrange themselves in so many ways. If we chose any XYZ atoms from this vessel, 
 we would find a very large number of configurations or states. The macroscopic properties that we observe are a result of average of these configurations.
@@ -28,11 +28,6 @@ However, a better solution is given by the ergodic hypothesis. It states that ov
 the system are equiprobable. In other words, time average of a property is same as sampling multiple states. As you can imagine, this is 
 really useful!
 
-```{admonition} Exercise x
-To test the ergodic hypothesis, use the MD code/LAMMPS to determine the density and/or velocity distribution of a system of XYZ Ar atoms
-as described earlier with MD simulation times of x, 10x and 100x ps. Sample the properties for every 100 timesteps with a timestep of x fs.
-Compare the calculated property with the experimental result of X.  
-```
 
  
 ## Ensembles
@@ -89,7 +84,7 @@ typically considered in interatomic potentials
 ### Bond stretch
 
 At finite temperautres, bonded atoms vibrate or chemical bond lengths deviate from their equilibrium values. These vibrations typically
-occur at certain frequencies characteristic to the different vibrational excitation levels for the bond. The vibrational ecitations also
+occur at certain frequencies characteristic to the different vibrational excitation levels for the bond. The vibrational excitations also
 increase the energy of the bond. After reaching sufficiently high energy (bond dissociation energy), the bond would eventually break. If
 interested in non-reactive application, the vibrational motion can be approximated sufficiently by harmonic approximation. For example, the
 energy of the HCl molecular bond can be reasonably approximated upto $E_2$ or $E_3$ by the following expresion
@@ -113,6 +108,8 @@ U(r_{HCl})=D_{HCl}[1-e^{-\alpha_{HCl}(r_{HCl}-r_{HCl.eq})}]^2
 $$
 
 +++
+
+
 
 
 

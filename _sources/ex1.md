@@ -49,3 +49,8 @@ plt.show()
 What would happen if we do not include the repulsion part of the LJ potential?
 ```
 
+```{admonition} Question 3
+To test the ergodic hypothesis, use LAMMPS to determine the density of a system of He atoms
+as described earlier with MD simulation times of 1, 2, 5, 10 and 100 ps. Use conditions 298 K and 5 bar. You can use the data after 
+initial property fluctuations are over. Compare the calculated density with NIST database.
+```

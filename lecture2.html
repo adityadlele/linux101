@@ -578,7 +578,7 @@ title="Print to PDF"
 <h1>Lecture 2<a class="headerlink" href="#lecture-2" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="ergodic-hypothesis">
 <h2>Ergodic hypothesis<a class="headerlink" href="#ergodic-hypothesis" title="Permalink to this headline">¶</a></h2>
-<p>We discussed an MD simulation related to liquid Ar previously. In this simulations, we modeled Ar liquid at 85 K using XYZ atoms. If you consider a
+<p>We discussed a MD simulation related to liquid Ar previously. In this simulations, we modeled Ar liquid at 95 K using ~900 atoms. If you consider a
 vessel full of liquid Ar with a volume of 10<span class="math notranslate nohighlight">\(^{-3}\)</span> <span class="math notranslate nohighlight">\(m^3\)</span>, it will contain 1.4096 kg of Ar or 2.125*10<span class="math notranslate nohighlight">\(^{25}\)</span> Ar atoms. Considering that this is a fluid,
 the arrangement of atoms is not periodic either. These atoms could arrange themselves in so many ways. If we chose any XYZ atoms from this vessel,
 we would find a very large number of configurations or states. The macroscopic properties that we observe are a result of average of these configurations.
@@ -587,12 +587,6 @@ How does our system of XYZ atoms would predict the macroscopic properties?</p>
 However, a better solution is given by the ergodic hypothesis. It states that over long periods of time, all the states of
 the system are equiprobable. In other words, time average of a property is same as sampling multiple states. As you can imagine, this is
 really useful!</p>
-<div class="admonition-exercise-x admonition">
-<p class="admonition-title">Exercise x</p>
-<p>To test the ergodic hypothesis, use the MD code/LAMMPS to determine the density and/or velocity distribution of a system of XYZ Ar atoms
-as described earlier with MD simulation times of x, 10x and 100x ps. Sample the properties for every 100 timesteps with a timestep of x fs.
-Compare the calculated property with the experimental result of X.</p>
-</div>
 </div>
 <div class="section" id="ensembles">
 <h2>Ensembles<a class="headerlink" href="#ensembles" title="Permalink to this headline">¶</a></h2>
@@ -636,7 +630,7 @@ typically considered in interatomic potentials</p>
 <div class="section" id="bond-stretch">
 <h3>Bond stretch<a class="headerlink" href="#bond-stretch" title="Permalink to this headline">¶</a></h3>
 <p>At finite temperautres, bonded atoms vibrate or chemical bond lengths deviate from their equilibrium values. These vibrations typically
-occur at certain frequencies characteristic to the different vibrational excitation levels for the bond. The vibrational ecitations also
+occur at certain frequencies characteristic to the different vibrational excitation levels for the bond. The vibrational excitations also
 increase the energy of the bond. After reaching sufficiently high energy (bond dissociation energy), the bond would eventually break. If
 interested in non-reactive application, the vibrational motion can be approximated sufficiently by harmonic approximation. For example, the
 energy of the HCl molecular bond can be reasonably approximated upto <span class="math notranslate nohighlight">\(E_2\)</span> or <span class="math notranslate nohighlight">\(E_3\)</span> by the following expresion</p>
