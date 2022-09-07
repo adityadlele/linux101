@@ -56,3 +56,32 @@ to determine the density of the system. Use data spanning 1, 2, 5, 10, 20 and 10
 initial property fluctuations are over. You can use a combination of head and tail command to randomly extract
 the data. Compare the calculated density with NIST database and comment on the comparison.
 ```
+
+
+```{admonition} Question 4
+Calculate the strain energy for this molecule, using the harmonic force field parameters below. Ignore the LJ-interactions between atoms sharing a bond. Atoms with an interatomic distance 40$\%$ longer than their equilibrium distance should be considered not bonded.
+
++++
+$R_{OH}$ =1.0 $Ang$, $k _{OH}$ =1000 kJ/(mol*$Ang^2$ )
++++
+
++++
+$R_{HH}$ =0.7 $Ang$, $k_{HH}$ =1000 kJ/(mol*$Ang^2$)
++++
+
+
+$\theta_{HOH}$ =105$^o$, $k_{HOH}$ =0.25 kJ/(mol*degree$^2$ )
+
+$\theta_{HHO}$ =180$^o$, $k_{HHO}$ =0.25 kJ/(mol*degree$^2$ )
+
+$\epsilon(H)$=0.25 kJ/mol, $\sigma$(H)=2.0 $Ang$
+
+$\epsilon(O)$=0.50 kJ/mol, $\sigma$(H)=3.8 $Ang$
+
+The strain energy can be calculated using
++++
+$$
+E=\sum_{a=1}^{n-1}\sum_{b=a+1}^{n}4\epsilon\left(\left(\frac{\sigma}{r_{ab}}\right)^{12}-\left(\frac{\sigma}{r_{ab}}\right)^6\right)+\sum_{i=1}^{n_{bound}}k_b(r_i-r_o)^2+\sum_{j=1}^{n_{angles}}k_v(\theta_i-\theta_o)^2
+$$
++++
+```

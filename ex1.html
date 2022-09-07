@@ -448,6 +448,21 @@ to determine the density of the system. Use data spanning 1, 2, 5, 10, 20 and 10
 initial property fluctuations are over. You can use a combination of head and tail command to randomly extract
 the data. Compare the calculated density with NIST database and comment on the comparison.</p>
 </div>
+<div class="admonition-question-4 admonition">
+<p class="admonition-title">Question 4</p>
+<p>Calculate the strain energy for this molecule, using the harmonic force field parameters below. Ignore the LJ-interactions between atoms sharing a bond. Atoms with an interatomic distance 40<span class="math notranslate nohighlight">\(\%\)</span> longer than their equilibrium distance should be considered not bonded.</p>
+<p><span class="math notranslate nohighlight">\(R_{OH}\)</span> =1.0 <span class="math notranslate nohighlight">\(Ang\)</span>, <span class="math notranslate nohighlight">\(k _{OH}\)</span> =1000 kJ/(mol*<span class="math notranslate nohighlight">\(Ang^2\)</span> )</p>
+<p><span class="math notranslate nohighlight">\(R_{HH}\)</span> =0.7 <span class="math notranslate nohighlight">\(Ang\)</span>, <span class="math notranslate nohighlight">\(k_{HH}\)</span> =1000 kJ/(mol*<span class="math notranslate nohighlight">\(Ang^2\)</span>)</p>
+<p><span class="math notranslate nohighlight">\(\theta_{HOH}\)</span> =105<span class="math notranslate nohighlight">\(^o\)</span>, <span class="math notranslate nohighlight">\(k_{HOH}\)</span> =0.25 kJ/(mol*degree<span class="math notranslate nohighlight">\(^2\)</span> )</p>
+<p><span class="math notranslate nohighlight">\(\theta_{HHO}\)</span> =180<span class="math notranslate nohighlight">\(^o\)</span>, <span class="math notranslate nohighlight">\(k_{HHO}\)</span> =0.25 kJ/(mol*degree<span class="math notranslate nohighlight">\(^2\)</span> )</p>
+<p><span class="math notranslate nohighlight">\(\epsilon(H)\)</span>=0.25 kJ/mol, <span class="math notranslate nohighlight">\(\sigma\)</span>(H)=2.0 <span class="math notranslate nohighlight">\(Ang\)</span></p>
+<p><span class="math notranslate nohighlight">\(\epsilon(O)\)</span>=0.50 kJ/mol, <span class="math notranslate nohighlight">\(\sigma\)</span>(H)=3.8 <span class="math notranslate nohighlight">\(Ang\)</span></p>
+<p>The strain energy can be calculated using</p>
+<div class="math notranslate nohighlight">
+\[
+E=\sum_{a=1}^{n-1}\sum_{b=a+1}^{n}4\epsilon\left(\left(\frac{\sigma}{r_{ab}}\right)^{12}-\left(\frac{\sigma}{r_{ab}}\right)^6\right)+\sum_{i=1}^{n_{bound}}k_b(r_i-r_o)^2+\sum_{j=1}^{n_{angles}}k_v(\theta_i-\theta_o)^2
+\]</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
