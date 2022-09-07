@@ -561,6 +561,42 @@ conda activate ase
 </div>
 <div class="section" id="lammps-example-script">
 <h3>LAMMPS example script<a class="headerlink" href="#lammps-example-script" title="Permalink to this headline">¶</a></h3>
+<p>Installing LAMMPS</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># double-precision build for single- and multi-node CPU jobs</span>
+
+<span class="nv">VERSION</span><span class="o">=</span>31Aug2021
+wget https://github.com/lammps/lammps/archive/refs/tags/patch_<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>.tar.gz
+tar zvxf patch_<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>.tar.gz
+<span class="nb">cd</span> lammps-patch_<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>
+mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+
+<span class="c1"># include the modules below in your Slurm scipt</span>
+module purge
+module load intel/19.1.1.217 intel-mpi/intel/2019.7
+
+cmake3 <span class="se">\</span>
+-D <span class="nv">CMAKE_INSTALL_PREFIX</span><span class="o">=</span><span class="nv">$HOME</span>/.local <span class="se">\</span>
+-D <span class="nv">LAMMPS_MACHINE</span><span class="o">=</span>adroit <span class="se">\</span>
+-D <span class="nv">CMAKE_BUILD_TYPE</span><span class="o">=</span>Release <span class="se">\</span>
+-D <span class="nv">CMAKE_CXX_COMPILER</span><span class="o">=</span>icpc <span class="se">\</span>
+-D <span class="nv">CMAKE_CXX_FLAGS_RELEASE</span><span class="o">=</span><span class="s2">&quot;-Ofast -xHost -DNDEBUG&quot;</span> <span class="se">\</span>
+-D <span class="nv">CMAKE_Fortran_COMPILER</span><span class="o">=</span>/opt/intel/compilers_and_libraries_2020.1.217/linux/bin/intel64/ifort <span class="se">\</span>
+-D <span class="nv">BUILD_OMP</span><span class="o">=</span>yes <span class="se">\</span>
+-D <span class="nv">BUILD_MPI</span><span class="o">=</span>yes <span class="se">\</span>
+-D <span class="nv">PKG_KSPACE</span><span class="o">=</span>yes -D <span class="nv">FFT</span><span class="o">=</span>MKL -D <span class="nv">FFT_SINGLE</span><span class="o">=</span>no <span class="se">\</span>
+-D <span class="nv">PKG_OPENMP</span><span class="o">=</span>yes <span class="se">\</span>
+-D <span class="nv">PKG_MOLECULE</span><span class="o">=</span>yes <span class="se">\</span>
+-D <span class="nv">PKG_RIGID</span><span class="o">=</span>yes <span class="se">\</span>
+-D <span class="nv">PKG_REAXFF</span><span class="o">=</span>yes<span class="se">\</span>
+-D <span class="nv">ENABLE_TESTING</span><span class="o">=</span>yes ../cmake
+
+make -j <span class="m">10</span>
+<span class="c1">#make test</span>
+make install
+</pre></div>
+</div>
 <p>We will try to use a LAMMPS executable that has been already compiled</p>
 <p>Use the following job submission script to submit a LAMMPS job</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
