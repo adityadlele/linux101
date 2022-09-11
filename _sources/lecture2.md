@@ -19,9 +19,9 @@ Lecture 2
 
 We discussed a MD simulation related to liquid Ar previously. In this simulations, we modeled Ar liquid at 95 K using ~900 atoms. If you consider a
 vessel full of liquid Ar with a volume of 10$^{-3}$ $m^3$, it will contain 1.4096 kg of Ar or 2.125*10$^{25}$ Ar atoms. Considering that this is a fluid,
-the arrangement of atoms is not periodic either. These atoms could arrange themselves in so many ways. If we chose any XYZ atoms from this vessel, 
+the arrangement of atoms is not periodic either. These atoms could arrange themselves in so many ways. If we chose any ~900 atoms from this vessel, 
 we would find a very large number of configurations or states. The macroscopic properties that we observe are a result of an average of these configurations.
-How does our system of XYZ atoms would predict the macroscopic properties? 
+How does our system of ~900 atoms would predict the macroscopic properties? 
 
 Of course, we can model a large number of configurations and then take an average to calculate the property of interest.
 However, a better solution is given by the ergodic hypothesis. It states that over long periods of time, all the states of 
