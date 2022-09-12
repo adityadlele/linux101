@@ -107,3 +107,15 @@ srun /home/al9001/.local/bin/lmp_adroit -in in.lammps
 You can take a look at [this](https://researchcomputing.princeton.edu/support/knowledge-base/slurm) guide to learn more about job monitoring.
 
 4. Plot the energy as a function of time using [gnuplot](http://www.gnuplot.info/) or Python. You can use log.lammps file.
+
+Some useful commands
+```sh
+gnuplot
+plot "log.lammps" using 1:8
+```
+
+```sh
+f(x) = m * x + q
+fit [100000:500000][0:0.01] f(x) 'log.lammps' using 1:8 via m, q
+plot [100000:500000][0:0.01] "log.lammps" using 1:8, f(x)
+```
