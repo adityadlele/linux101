@@ -56,6 +56,17 @@ to determine the density of the system. Use data spanning 1, 2, 5, 10, 20 and 10
 initial property fluctuations are over. You can use a combination of head and tail command to randomly extract
 the data. Compare the calculated density with NIST database and comment on the comparison.
 ```
+Hints:
+```sh
+#Use the following line to change in.lammps from class example
+pair_style      lj/cut 3.5
+pair_coeff      1 1 0.02166 2.64 3.5
+```
+
+```sh
+#Change geometry parameters in ar.data file in the masses section
+1 4.0026  # He
+```
 
 
 ```{admonition} Question 4

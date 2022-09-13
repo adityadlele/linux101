@@ -448,6 +448,16 @@ to determine the density of the system. Use data spanning 1, 2, 5, 10, 20 and 10
 initial property fluctuations are over. You can use a combination of head and tail command to randomly extract
 the data. Compare the calculated density with NIST database and comment on the comparison.</p>
 </div>
+<p>Hints:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">#Use the following line to change in.lammps from class example</span>
+pair_style      lj/cut <span class="m">3</span>.5
+pair_coeff      <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.02166 <span class="m">2</span>.64 <span class="m">3</span>.5
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">#Change geometry parameters in ar.data file in the masses section</span>
+<span class="m">1</span> <span class="m">4</span>.0026  <span class="c1"># He</span>
+</pre></div>
+</div>
 <div class="admonition-question-4 admonition">
 <p class="admonition-title">Question 4</p>
 <p>Calculate the strain energy for this molecule, using the harmonic force field parameters below. Ignore the LJ-interactions between atoms sharing a bond. Atoms with an interatomic distance 40<span class="math notranslate nohighlight">\(\%\)</span> longer than their equilibrium distance should be considered not bonded.</p>
