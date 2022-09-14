@@ -517,7 +517,7 @@ make install
 </pre></div>
 </div>
 <p>Then run the installations using the following command. Make sure you open the visualization node
-on Lammps as that has internet access required for installation.</p>
+on Adroit dashboard as that has internet access required for installation.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>./install.sh
 </pre></div>
 </div>
@@ -542,7 +542,7 @@ module load intel/19.1.1.217 intel-mpi/intel/2019.7
 srun /home/al9001/.local/bin/lmp_adroit -in <span class="k">in</span>.lammps
 </pre></div>
 </div>
-<p>The  create an input file in the same location. The input file can be copied from below or dowloaded from Canvas.</p>
+<p>Then create an input file in the same location with the name in.lammps. The input file can be copied from below or dowloaded from Canvas.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>units           real
 atom_style      atomic
 
@@ -601,6 +601,10 @@ plot <span class="o">[</span><span class="m">100000</span>:500000<span class="o"
 </pre></div>
 </div>
 <p>You should be able to see an output similar to the one that we saw in the class.</p>
+<p>To exit the GNUPLOT environment:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">exit</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="ovito">
 <h2>OVITO<a class="headerlink" href="#ovito" title="Permalink to this headline">¶</a></h2>

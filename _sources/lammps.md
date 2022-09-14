@@ -69,7 +69,7 @@ chmod +x ./install.sh
 ```
 
 Then run the installations using the following command. Make sure you open the visualization node
-on Lammps as that has internet access required for installation. 
+on Adroit dashboard as that has internet access required for installation. 
 
 ```sh
 ./install.sh
@@ -100,7 +100,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun /home/al9001/.local/bin/lmp_adroit -in in.lammps
 ```
-The  create an input file in the same location. The input file can be copied from below or dowloaded from Canvas.
+Then create an input file in the same location with the name in.lammps. The input file can be copied from below or dowloaded from Canvas.
 
 ```sh
 units           real
@@ -171,6 +171,12 @@ fit [100000:500000][0:0.01] f(x) 'log.lammps' using 1:8 via m, q
 plot [100000:500000][0:0.01] "log.lammps" using 1:8, f(x)
 ```
 You should be able to see an output similar to the one that we saw in the class. 
+
+To exit the GNUPLOT environment:
+```sh
+exit
+```
+
 
 
 ## OVITO
