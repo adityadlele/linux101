@@ -72,8 +72,14 @@ pair_coeff      1 1 0.02166 2.64 3.5
 ```{admonition} Question 4
 
 Atom No. Atom type x y z
+
+
 1 O 0.0 0.0 0.0
+
+
 2 H 1.1 0.0 0.0
+
+
 3 H 0.2 0.9 0.0
 
 Calculate the strain energy for this molecule, using the harmonic force field parameters below. Ignore the LJ-interactions between atoms sharing a bond. Atoms with an interatomic distance 40$\%$ longer than their equilibrium distance should be considered not bonded.
