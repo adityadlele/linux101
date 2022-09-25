@@ -427,6 +427,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#packmol">
+   PACKMOL
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#vasp">
    VASP
   </a>
@@ -492,6 +497,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ovito">
    OVITO
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#packmol">
+   PACKMOL
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -654,6 +664,22 @@ run             <span class="m">10000</span>
 <div class="section" id="ovito">
 <h2>OVITO<a class="headerlink" href="#ovito" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://www.ovito.org/">OVITO</a> is an easy to use visualization software that can also be used to convert different geometry file formats. You can download and install the free version locally on your computer for visualization.</p>
+</div>
+<div class="section" id="packmol">
+<h2>PACKMOL<a class="headerlink" href="#packmol" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://leandro.iqm.unicamp.br/m3g/packmol/download.shtml">PACKMOL</a> is a tool to generate intial MD configurations for molecules. Please download it
+using the link and upload it to your home folder (/home/Princeton_ID/). The download file name should be “packmol.tar.gz”. Unzip this file using the following command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>tar -xf packmol.tar.gz
+</pre></div>
+</div>
+<p>Also download the examples.zip file from the website and upload it to your home folder. Unzip it using the following command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>unzip examples.zip
+</pre></div>
+</div>
+<p>Change the directory to examples folder and execute following command to generate an example geometry.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>/location_to_packmol/packmol &lt; mixture.inp
+</pre></div>
+</div>
 </div>
 <div class="section" id="vasp">
 <h2>VASP<a class="headerlink" href="#vasp" title="Permalink to this headline">¶</a></h2>

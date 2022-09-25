@@ -141,6 +141,26 @@ run             10000
 
 [OVITO](https://www.ovito.org/) is an easy to use visualization software that can also be used to convert different geometry file formats. You can download and install the free version locally on your computer for visualization.
 
+## PACKMOL
+
+[PACKMOL](http://leandro.iqm.unicamp.br/m3g/packmol/download.shtml) is a tool to generate intial MD configurations for molecules. Please download it
+using the link and upload it to your home folder (/home/Princeton_ID/). The download file name should be "packmol.tar.gz". Unzip this file using the following command
+
+```sh
+tar -xf packmol.tar.gz
+``` 
+
+Also download the examples.zip file from the website and upload it to your home folder. Unzip it using the following command
+
+```sh
+unzip examples.zip
+``` 
+
+Change the directory to examples folder and execute following command to generate an example geometry.
+
+```sh
+/location_to_packmol/packmol < mixture.inp
+```
 
 
 ## VASP
