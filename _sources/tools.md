@@ -149,6 +149,12 @@ using the link and upload it to your home folder (/home/Princeton_ID/). The down
 ```sh
 tar -xf packmol.tar.gz
 ``` 
+Change the directory to Packmol and compile it using the command
+
+```sh
+make
+```
+
 
 Also download the examples.zip file from the website and upload it to your home folder. Unzip it using the following command
 
