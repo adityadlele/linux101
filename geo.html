@@ -588,6 +588,16 @@ add_adsorbate<span class="o">(</span>slab, <span class="s1">&#39;N&#39;</span>, 
 view<span class="o">(</span>slab, <span class="nv">viewer</span><span class="o">=</span><span class="s1">&#39;x3d&#39;</span><span class="o">)</span>
 </pre></div>
 </div>
+<p>Now, to create a carbon nanotube</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">cnt</span> <span class="o">=</span> nanotube<span class="o">(</span><span class="m">6</span>, <span class="m">0</span>, <span class="nv">length</span><span class="o">=</span><span class="m">4</span><span class="o">)</span>
+view<span class="o">(</span>cnt, <span class="nv">viewer</span><span class="o">=</span><span class="s1">&#39;x3d&#39;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>You can also attach two structures. For example to stack two nanotubes together</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">at2</span> <span class="o">=</span> attach.attach<span class="o">(</span>cnt,cnt,2<span class="o">)</span>
+view<span class="o">(</span>at2, <span class="nv">viewer</span><span class="o">=</span><span class="s1">&#39;x3d&#39;</span><span class="o">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 

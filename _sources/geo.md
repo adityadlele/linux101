@@ -160,3 +160,16 @@ slab = fcc100('Pt', size=(3,2,2))
 add_adsorbate(slab, 'N', 1.5, 'ontop')
 view(slab, viewer='x3d')
 ```
+
+Now, to create a carbon nanotube
+
+```sh
+cnt = nanotube(6, 0, length=4)
+view(cnt, viewer='x3d')
+```
+
+You can also attach two structures. For example to stack two nanotubes together
+```sh
+at2 = attach.attach(cnt,cnt,2)
+view(at2, viewer='x3d')
+```
