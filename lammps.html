@@ -415,6 +415,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lammps-energy-minimization">
+   LAMMPS energy minimization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ovito">
    OVITO
   </a>
@@ -446,6 +451,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lammps-installation">
    LAMMPS installation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lammps-energy-minimization">
+   LAMMPS energy minimization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -615,6 +625,65 @@ plot <span class="o">[</span><span class="m">100000</span>:500000<span class="o"
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">exit</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="lammps-energy-minimization">
+<h2>LAMMPS energy minimization<a class="headerlink" href="#lammps-energy-minimization" title="Permalink to this headline">¶</a></h2>
+<p>We will use ReaxFF example files to run an energy minimization simulation. Copy the ReaxFF CHO exmaple folder</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cp -r <span class="se">\l</span>ocation_of_lammps_installation<span class="se">\e</span>xamples<span class="se">\r</span>eaxff<span class="se">\C</span>HO <span class="se">\s</span>cratch<span class="se">\n</span>etwork<span class="se">\&lt;</span>your_net_ID&gt;<span class="se">\m</span>in
+</pre></div>
+</div>
+<p>Now we will make some changes to the input file to run energy minimization. You can copy the following to your input file</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>units           real
+
+atom_style      charge
+read_data      CH4.lammps-data
+<span class="c1">#read_data       mix.data</span>
+
+pair_style      reax/c lmp_control
+pair_coeff      * * ffield.reax.cho C H
+
+neighbor        <span class="m">2</span> bin
+neigh_modify    every <span class="m">10</span> delay <span class="m">0</span> check no
+
+<span class="c1">#fix            1 all nve</span>
+fix             <span class="m">1</span> all nvt temp <span class="m">500</span>.0 <span class="m">500</span>.0 <span class="m">100</span>.0
+fix             <span class="m">2</span> all qeq/reax <span class="m">1</span> <span class="m">0</span>.0 <span class="m">10</span>.0 1e-6 param.qeq
+<span class="c1">#fix             3 all temp/berendsen 500.0 500.0 100.0</span>
+
+<span class="c1">#timestep       0.25</span>
+run             <span class="m">10000</span>
+
+<span class="c1">#dump           1 all atom 1 dump.reax.cho</span>
+dump             <span class="m">1</span> all custom <span class="m">1</span> dump.cho id element x y z
+dump_modify     <span class="m">1</span> element C H
+minimize        <span class="m">1</span>.0e-5 <span class="m">1</span>.0e-6 <span class="m">100</span> <span class="m">100000</span>
+min_style       cg
+<span class="c1">#run            3000</span>
+</pre></div>
+</div>
+<p>Also, generate a data file with following coordinates.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># LAMMPS data file written by OVITO Basic 3.5.4</span>
+<span class="m">5</span> atoms
+<span class="m">2</span> atom types
+-0.5676 <span class="m">6</span>.63 xlo xhi
+-0.7276 <span class="m">6</span>.63 ylo yhi
+-0.7276 <span class="m">6</span>.63 zlo zhi
+
+Masses
+
+<span class="m">1</span> <span class="m">12</span>.0107  <span class="c1"># C</span>
+<span class="m">2</span> <span class="m">1</span>.00794  <span class="c1"># H</span>
+
+Atoms  <span class="c1"># charge</span>
+
+<span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">0</span>.0 <span class="m">0</span>.0 <span class="m">0</span>.0
+<span class="m">2</span> <span class="m">2</span> <span class="m">0</span>.0 <span class="m">0</span>.63 <span class="m">0</span>.63 <span class="m">0</span>.63
+<span class="m">3</span> <span class="m">2</span> <span class="m">0</span>.0 <span class="m">0</span>.5276 -0.6276 -0.7276
+<span class="m">4</span> <span class="m">2</span> <span class="m">0</span>.0 -0.4276 <span class="m">0</span>.4276 -0.5276
+<span class="m">5</span> <span class="m">2</span> <span class="m">0</span>.0 -0.5676 -0.7276 <span class="m">0</span>.6276
+</pre></div>
+</div>
+<p>Copy and edit the job submission script to submit the job.</p>
 </div>
 <div class="section" id="ovito">
 <h2>OVITO<a class="headerlink" href="#ovito" title="Permalink to this headline">¶</a></h2>

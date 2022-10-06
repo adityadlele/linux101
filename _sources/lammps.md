@@ -177,7 +177,70 @@ To exit the GNUPLOT environment:
 exit
 ```
 
+## LAMMPS energy minimization
 
+We will use ReaxFF example files to run an energy minimization simulation. Copy the ReaxFF CHO exmaple folder 
+
+```sh
+cp -r \location_of_lammps_installation\examples\reaxff\CHO \scratch\network\<your_net_ID>\min
+```
+
+Now we will make some changes to the input file to run energy minimization. You can copy the following to your input file
+
+```sh
+units           real
+
+atom_style      charge
+read_data      CH4.lammps-data
+#read_data       mix.data
+
+pair_style      reax/c lmp_control
+pair_coeff      * * ffield.reax.cho C H
+
+neighbor        2 bin
+neigh_modify    every 10 delay 0 check no
+
+#fix            1 all nve
+fix             1 all nvt temp 500.0 500.0 100.0
+fix             2 all qeq/reax 1 0.0 10.0 1e-6 param.qeq
+#fix             3 all temp/berendsen 500.0 500.0 100.0
+
+#timestep       0.25
+run             10000
+
+#dump           1 all atom 1 dump.reax.cho
+dump             1 all custom 1 dump.cho id element x y z
+dump_modify     1 element C H
+minimize        1.0e-5 1.0e-6 100 100000
+min_style       cg
+#run            3000
+```
+
+Also, generate a data file with following coordinates.
+
+```sh
+# LAMMPS data file written by OVITO Basic 3.5.4
+5 atoms
+2 atom types
+-0.5676 6.63 xlo xhi
+-0.7276 6.63 ylo yhi
+-0.7276 6.63 zlo zhi
+
+Masses
+
+1 12.0107  # C
+2 1.00794  # H
+
+Atoms  # charge
+
+1 1 0.0 0.0 0.0 0.0
+2 2 0.0 0.63 0.63 0.63
+3 2 0.0 0.5276 -0.6276 -0.7276
+4 2 0.0 -0.4276 0.4276 -0.5276
+5 2 0.0 -0.5676 -0.7276 0.6276
+```
+
+Copy and edit the job submission script to submit the job.
 
 ## OVITO
 
