@@ -420,6 +420,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lammps-diffusion-example">
+   LAMMPS diffusion example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ovito">
    OVITO
   </a>
@@ -456,6 +461,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lammps-energy-minimization">
    LAMMPS energy minimization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lammps-diffusion-example">
+   LAMMPS diffusion example
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -684,6 +694,161 @@ Atoms  <span class="c1"># charge</span>
 </pre></div>
 </div>
 <p>Copy and edit the job submission script to submit the job.</p>
+</div>
+<div class="section" id="lammps-diffusion-example">
+<h2>LAMMPS diffusion example<a class="headerlink" href="#lammps-diffusion-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=diff       # create a short name for your job</span>
+<span class="c1">#SBATCH --nodes=1                # node count</span>
+<span class="c1">#SBATCH --ntasks=4               # total number of tasks across all nodes</span>
+<span class="c1">#SBATCH --cpus-per-task=1        # cpu-cores per task (&gt;1 if multi-threaded tasks)</span>
+<span class="c1">#SBATCH --mem-per-cpu=1G         # memory per cpu-core (4G is default)</span>
+<span class="c1">#SBATCH --time=00:15:00          # total run time limit (HH:MM:SS)</span>
+<span class="c1">#SBATCH --mail-type=begin        # send email when job begins</span>
+<span class="c1">#SBATCH --mail-type=end          # send email when job ends</span>
+<span class="c1">#SBATCH --mail-user=al9001@princeton.edu</span>
+
+module purge
+module load intel/19.1.1.217
+module load intel-mpi/intel/2019.7
+<span class="nb">export</span> <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
+<span class="c1">###Create directories</span>
+mkdir <span class="o">{</span><span class="m">2000</span>..10000..2000<span class="o">}</span>
+
+<span class="c1">###Copy files into the directories</span>
+
+<span class="c1">#for d in ./*/; do cp limn2o4.vac.data limn2o4.msd.in &quot;$d&quot;; done</span>
+
+
+<span class="k">for</span> d <span class="k">in</span> */ <span class="p">;</span> <span class="k">do</span>
+    <span class="nv">d2</span><span class="o">=</span><span class="si">${</span><span class="nv">d</span><span class="p">:</span><span class="k">:-</span><span class="nv">1</span><span class="si">}</span>
+<span class="c1">#    echo &quot;$d&quot; &amp;&gt; ./&quot;$d&quot;/test.txt</span>
+     <span class="nb">echo</span> <span class="s2">&quot;units           metal</span>
+
+<span class="s2">dimension       3</span>
+<span class="s2">boundary        p p p</span>
+<span class="s2">atom_style      atomic</span>
+<span class="s2">neighbor        2.5 bin</span>
+<span class="s2">neigh_modify    every 1</span>
+
+
+<span class="s2">read_data       limn2o4.vac.data</span>
+<span class="s2">pair_style      lj/cut 16.5</span>
+<span class="s2">pair_coeff      1 1 0.249 3.57 16.5</span>
+<span class="s2">pair_coeff      1 2 0.292 3.25 16.5</span>
+<span class="s2">pair_coeff      1 3 0.195 1.77 16.5</span>
+<span class="s2">pair_coeff      2 2 0.204 2.91 16.5</span>
+<span class="s2">pair_coeff      2 3 0.226 2.06 12.0</span>
+<span class="s2">pair_coeff      3 3 0.204 2.91 12.0</span>
+
+<span class="s2">timestep        0.0005</span>
+<span class="s2">fix             1 all nvt temp &quot;</span><span class="nv">$d2</span><span class="s2">&quot; &quot;</span><span class="nv">$d2</span><span class="s2">&quot; 0.05</span>
+<span class="s2">velocity        all create 10000 9865758 dist uniform</span>
+
+<span class="s2">dump            1 all xyz 1000 limn2o4.xyz</span>
+<span class="s2">dump_modify     1 element Li Mn O</span>
+
+<span class="s2">group           lithiums type 1</span>
+<span class="s2">group           manganeses type 2</span>
+<span class="s2">group           oxygens type 2</span>
+<span class="s2">compute         mymsdli lithiums msd com yes </span>
+<span class="s2">compute         mymsdmn manganeses msd com yes </span>
+<span class="s2">compute         mymsdo oxygens msd com yes </span>
+
+<span class="s2">thermo          1000</span>
+<span class="s2">thermo_style    custom step time temp c_mymsdli[4] c_mymsdmn[4] c_mymsdo[4]</span>
+
+<span class="s2">run             100000&quot;</span> <span class="p">&amp;</span>&gt; ./<span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span>/limn2o4.msd.in
+
+   <span class="nb">echo</span> <span class="s2">&quot;Structure of LiMn2O4</span>
+<span class="s2"> </span>
+<span class="s2">      52    atoms</span>
+<span class="s2"> </span>
+<span class="s2">         3    atom types</span>
+<span class="s2"> </span>
+<span class="s2">       0.000000      8.2500000 xlo xhi</span>
+<span class="s2">       0.000000      8.2500000 ylo yhi</span>
+<span class="s2">       0.000000      8.2500000 zlo zhi</span>
+<span class="s2"> </span>
+<span class="s2">              Masses</span>
+<span class="s2"> </span>
+<span class="s2">         1            6.941</span>
+<span class="s2">         2           54.938</span>
+<span class="s2">         3           15.999</span>
+<span class="s2">               Atoms</span>
+
+<span class="s2"> 1 1 4.11085 4.10814 0.00177939         </span>
+<span class="s2"> 2 1 8.23585 4.10814 4.12677</span>
+<span class="s2"> 3 1 4.11085 8.23315 4.12677</span>
+<span class="s2"> 4 1 6.17335 2.04564 6.18928</span>
+<span class="s2"> 5 2 1.0171 1.0144 5.15803</span>
+<span class="s2"> 6 2 5.14211 5.13939 5.15802</span>
+<span class="s2"> 7 2 7.2046 3.07689 1.03302</span>
+<span class="s2"> 8 2 3.0796 5.1394 3.09552</span>
+<span class="s2"> 9 2 3.07961 1.01439 7.22052</span>
+<span class="s2">10 2 5.14211 7.20189 7.22052</span>
+<span class="s2">11 2 1.0171 7.2019 3.09552</span>
+<span class="s2">12 2 5.1421 1.01438 1.03302</span>
+<span class="s2">13 2 3.0796 3.0769 5.15802</span>
+<span class="s2">14 2 7.2046 5.13938 7.22052</span>
+<span class="s2">15 2 1.0171 5.13939 1.03302</span>
+<span class="s2">16 2 5.14209 3.07689 3.09552</span>
+<span class="s2">17 2 7.20461 7.20189 5.15802</span>
+<span class="s2">18 2 3.0796 7.20189 1.03302</span>
+<span class="s2">19 2 1.01711 3.0769 7.22052</span>
+<span class="s2">20 2 7.2046 1.01439 3.09553</span>
+<span class="s2">21 3 1.02723 1.02452 3.08539</span>
+<span class="s2">22 3 7.19448 3.06676 7.2104</span>
+<span class="s2">23 3 3.06948 5.14952 5.16815</span>
+<span class="s2">24 3 5.15223 7.19176 1.04315</span>
+<span class="s2">25 3 3.06948 1.02452 1.04315</span>
+<span class="s2">26 3 7.19447 7.19176 3.0854</span>
+<span class="s2">27 3 5.15224 3.06676 5.16815</span>
+<span class="s2">28 3 1.02724 5.14952 7.21039</span>
+<span class="s2">29 3 1.02723 3.06676 1.04315</span>
+<span class="s2">30 3 3.06948 7.19176 7.2104</span>
+<span class="s2">31 3 3.06947 3.06676 3.08539</span>
+<span class="s2">32 3 5.15223 5.14952 3.08539</span>
+<span class="s2">33 3 7.19448 1.02452 5.16816</span>
+<span class="s2">34 3 7.21473 3.08702 3.10565</span>
+<span class="s2">35 3 7.21473 7.21201 7.23065</span>
+<span class="s2">36 3 1.00698 1.00426 7.23065</span>
+<span class="s2">37 3 3.08973 5.12926 1.0229</span>
+<span class="s2">38 3 5.13198 7.21202 5.1479</span>
+<span class="s2">39 3 7.21473 5.12926 5.14789</span>
+<span class="s2">40 3 5.13197 1.00427 3.10565</span>
+<span class="s2">41 3 1.00697 7.21202 1.0229</span>
+<span class="s2">42 3 3.08974 3.08702 7.23065</span>
+<span class="s2">43 3 1.00698 3.08702 5.1479</span>
+<span class="s2">44 3 5.13198 5.12926 7.23065</span>
+<span class="s2">45 3 3.08973 7.21202 3.10565</span>
+<span class="s2">46 3 7.21473 1.00426 1.0229</span>
+<span class="s2">47 3 5.13197 3.08701 1.0229</span>
+<span class="s2">48 3 1.00697 5.12927 3.10565</span>
+<span class="s2">49 3 3.08973 1.00427 5.1479</span>
+<span class="s2">50 3 7.19447 5.14952 1.04315</span>
+<span class="s2">51 3 5.15224 1.02451 7.2104</span>
+<span class="s2">52 3 1.02724 7.19177 5.16815       &quot;</span> <span class="p">&amp;</span>&gt; ./<span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span>/limn2o4.vac.data
+
+   <span class="nb">cd</span> <span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span>
+   srun ~/.local/bin/lmp_adroit -in limn2o4.msd.in
+   <span class="nb">cd</span> ../
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>Copy the following content to a file named <a class="reference external" href="http://run.sh">run.sh</a>.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> d <span class="k">in</span> */ <span class="p">;</span> <span class="k">do</span>
+   <span class="nb">cd</span> <span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span>
+   /usr/bin/gnuplot -e <span class="s1">&#39;set term png&#39;</span> -e <span class="s2">&quot;plot &#39;log.lammps&#39; u 1:4 with lines&quot;</span> &gt; ./out.png
+   <span class="nb">cd</span> ../
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>Make the <a class="reference external" href="http://run.sh">run.sh</a> file executable by using following command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>chmod +x run.sh
+</pre></div>
+</div>
+<p>Then run it after the job is run.</p>
 </div>
 <div class="section" id="ovito">
 <h2>OVITO<a class="headerlink" href="#ovito" title="Permalink to this headline">¶</a></h2>
