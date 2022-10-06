@@ -837,7 +837,8 @@ mkdir <span class="o">{</span><span class="m">2000</span>..10000..2000<span clas
 </pre></div>
 </div>
 <p>Copy the following content to a file named <a class="reference external" href="http://run.sh">run.sh</a>.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> d <span class="k">in</span> */ <span class="p">;</span> <span class="k">do</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="k">for</span> d <span class="k">in</span> */ <span class="p">;</span> <span class="k">do</span>
    <span class="nb">cd</span> <span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span>
    /usr/bin/gnuplot -e <span class="s1">&#39;set term png&#39;</span> -e <span class="s2">&quot;plot &#39;log.lammps&#39; u 1:4 with lines&quot;</span> &gt; ./out.png
    <span class="nb">cd</span> ../

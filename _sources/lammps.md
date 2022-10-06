@@ -387,6 +387,7 @@ done
 Copy the following content to a file named run.sh. 
 
 ```sh
+#!/bin/bash
 for d in */ ; do
    cd "$d"
    /usr/bin/gnuplot -e 'set term png' -e "plot 'log.lammps' u 1:4 with lines" > ./out.png
