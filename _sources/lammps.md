@@ -201,7 +201,7 @@ neighbor        2 bin
 neigh_modify    every 10 delay 0 check no
 
 #fix            1 all nve
-fix             1 all nvt temp 500.0 500.0 100.0
+#fix             1 all nvt temp 500.0 500.0 100.0
 fix             2 all qeq/reax 1 0.0 10.0 1e-6 param.qeq
 #fix             3 all temp/berendsen 500.0 500.0 100.0
 
