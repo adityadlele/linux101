@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 6 &#8212; Practical Molecular simulations</title>
+    <title>Example geometries &#8212; Practical Molecular simulations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -48,8 +48,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Advanced techniques" href="Advanced_techniques.html" />
-    <link rel="prev" title="Lecture 5" href="lecture5.html" />
+    <link rel="next" title="Molecular dynamics basics" href="md_basics.html" />
+    <link rel="prev" title="LAMMPS Tutorial 1" href="lammps.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -110,16 +110,16 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="prereq.html">
    Prerequisites
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="access.html">
      How to get access to Princeton compueter clusters
@@ -145,8 +145,8 @@ const thebe_selector_output = ".output, .cell_output"
      LAMMPS Tutorial 1
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="min.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Example geometries
     </a>
    </li>
@@ -184,23 +184,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="LAMMPS.html">
    LAMMPS
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="lecture5.html">
      Lecture 5
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture6.html">
      Lecture 6
     </a>
    </li>
@@ -350,7 +350,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/lecture6.md"
+        <a href="_sources/min.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -387,23 +387,70 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphite-geometry">
+   Graphite geometry
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diamond-geometry">
+   Diamond geometry
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lecture 6</h1>
+                <h1>Example geometries</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphite-geometry">
+   Graphite geometry
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diamond-geometry">
+   Diamond geometry
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -411,9 +458,67 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="section" id="lecture-6">
-<h1>Lecture 6<a class="headerlink" href="#lecture-6" title="Permalink to this headline">¶</a></h1>
-<p>TBD</p>
+  <div class="section" id="example-geometries">
+<h1>Example geometries<a class="headerlink" href="#example-geometries" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="graphite-geometry">
+<h2>Graphite geometry<a class="headerlink" href="#graphite-geometry" title="Permalink to this headline">¶</a></h2>
+<p>We will use the energy minimization example</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># LAMMPS data file written by OVITO Basic 3.5.4</span>
+<span class="m">8</span> atoms
+<span class="m">1</span> atom types
+<span class="m">0</span>.0 <span class="m">3</span>.57371 xlo xhi
+<span class="m">0</span>.0 <span class="m">3</span>.57371 ylo yhi
+<span class="m">0</span>.0 <span class="m">3</span>.57371 zlo zhi
+<span class="m">6</span>.0e-16 <span class="m">2</span>.0e-16 <span class="m">2</span>.0e-16 xy xz yz
+
+Masses
+
+<span class="m">1</span> <span class="m">12</span>.0107  <span class="c1"># C</span>
+
+Atoms  <span class="c1"># charge</span>
+
+<span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">0</span>.8934275 <span class="m">2</span>.6802825 <span class="m">0</span>.8934275
+<span class="m">2</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">1</span>.0e-16 <span class="m">1</span>.0e-16 <span class="m">1</span>.786855
+<span class="m">3</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">0</span>.8934275 <span class="m">0</span>.8934275 <span class="m">2</span>.6802825
+<span class="m">4</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">3</span>.0e-16 <span class="m">1</span>.786855 <span class="m">0</span>.0
+<span class="m">5</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">2</span>.6802825 <span class="m">2</span>.6802825 <span class="m">2</span>.6802825
+<span class="m">6</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">1</span>.786855 <span class="m">0</span>.0 <span class="m">1</span>.2325951644e-32
+<span class="m">7</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">2</span>.6802825 <span class="m">0</span>.8934275 <span class="m">0</span>.8934275
+<span class="m">8</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">1</span>.786855 <span class="m">1</span>.786855 <span class="m">1</span>.7868551~
+</pre></div>
+</div>
+</div>
+<div class="section" id="diamond-geometry">
+<h2>Diamond geometry<a class="headerlink" href="#diamond-geometry" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># LAMMPS data file written by OVITO Basic 3.5.4</span>
+<span class="m">12</span> atoms
+<span class="m">1</span> atom types
+<span class="m">0</span>.0 <span class="m">2</span>.4693712944 xlo xhi
+<span class="m">0</span>.0 <span class="m">2</span>.1385382723 ylo yhi
+<span class="m">0</span>.0 <span class="m">35</span>.5630722147 zlo zhi
+-1.2346856472 <span class="m">0</span>.0 <span class="m">0</span>.0 xy xz yz
+
+Masses
+
+<span class="m">1</span> <span class="m">12</span>.0107  <span class="c1"># C</span>
+
+Atoms  <span class="c1"># charge</span>
+
+<span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">1</span>.2346856472 <span class="m">0</span>.7128460908 <span class="m">10</span>.0493181116
+<span class="m">2</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">0</span>.0 <span class="m">0</span>.0 <span class="m">10</span>.0478126082
+<span class="m">3</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">1</span>.2346856472 <span class="m">0</span>.7128460908 <span class="m">1</span>.8065447967
+<span class="m">4</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">0</span>.0 <span class="m">0</span>.0 <span class="m">1</span>.8050392933
+<span class="m">5</span> <span class="m">1</span> <span class="m">0</span>.0 -1.1102230246e-16 <span class="m">1</span>.4256921816 <span class="m">21</span>.9036755165
+<span class="m">6</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">1</span>.2346856472 <span class="m">0</span>.7128460908 <span class="m">21</span>.9021700131
+<span class="m">7</span> <span class="m">1</span> <span class="m">0</span>.0 -1.1102230246e-16 <span class="m">1</span>.4256921816 <span class="m">13</span>.6609022016
+<span class="m">8</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">1</span>.2346856472 <span class="m">0</span>.7128460908 <span class="m">13</span>.6593966982
+<span class="m">9</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">0</span>.0 <span class="m">0</span>.0 <span class="m">33</span>.7580329214
+<span class="m">10</span> <span class="m">1</span> <span class="m">0</span>.0 -1.1102230246e-16 <span class="m">1</span>.4256921816 <span class="m">33</span>.756527418
+<span class="m">11</span> <span class="m">1</span> <span class="m">0</span>.0 <span class="m">0</span>.0 <span class="m">0</span>.0 <span class="m">25</span>.5152596065
+<span class="m">12</span> <span class="m">1</span> <span class="m">0</span>.0 -1.1102230246e-16 <span class="m">1</span>.4256921816 <span class="m">25</span>.51375410311
+</pre></div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -443,17 +548,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="lecture5.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="lammps.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lecture 5</p>
+            <p class="prev-next-title">LAMMPS Tutorial 1</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Advanced_techniques.html" title="next page">
+    <a class='right-next' id="next-link" href="md_basics.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Advanced techniques</p>
+        <p class="prev-next-title">Molecular dynamics basics</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
