@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 2 &#8212; Practical Molecular simulations</title>
+    <title>ASE Tutorial &#8212; Practical Molecular simulations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -46,12 +46,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lecture 3" href="lecture3.html" />
-    <link rel="prev" title="Lecture 1" href="lecture1.html" />
+    <link rel="next" title="Example geometries" href="min.html" />
+    <link rel="prev" title="LAMMPS Tutorials" href="lammps.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -112,16 +110,16 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="prereq.html">
    Prerequisites
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="access.html">
      How to get access to Princeton compueter clusters
@@ -147,8 +145,8 @@ const thebe_selector_output = ".output, .cell_output"
      LAMMPS Tutorials
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ase.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      ASE Tutorial
     </a>
    </li>
@@ -159,23 +157,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="md_basics.html">
    Molecular dynamics basics
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="lecture1.html">
      Lecture 1
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture2.html">
      Lecture 2
     </a>
    </li>
@@ -335,35 +333,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/lecture2.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -386,24 +355,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/lecture2.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="_sources/lecture2.md"
+        <a href="_sources/ase.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -463,26 +415,9 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ergodic-hypothesis">
-   Ergodic hypothesis
+  <a class="reference internal nav-link" href="#neb-example">
+   NEB Example
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ensembles">
-   Ensembles
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interatomic-potentials">
-   Interatomic potentials
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bond-stretch">
-     Bond stretch
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -493,7 +428,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lecture 2</h1>
+                <h1>ASE Tutorial</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -504,26 +439,9 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ergodic-hypothesis">
-   Ergodic hypothesis
+  <a class="reference internal nav-link" href="#neb-example">
+   NEB Example
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ensembles">
-   Ensembles
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interatomic-potentials">
-   Interatomic potentials
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bond-stretch">
-     Bond stretch
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -535,82 +453,70 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="section" id="lecture-2">
-<h1>Lecture 2<a class="headerlink" href="#lecture-2" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="ergodic-hypothesis">
-<h2>Ergodic hypothesis<a class="headerlink" href="#ergodic-hypothesis" title="Permalink to this headline">¶</a></h2>
-<p>We discussed a MD simulation related to liquid Ar previously. In this simulations, we modeled Ar liquid at 95 K using ~900 atoms. If you consider a
-vessel full of liquid Ar with a volume of 10<span class="math notranslate nohighlight">\(^{-3}\)</span> <span class="math notranslate nohighlight">\(m^3\)</span>, it will contain 1.4096 kg of Ar or 2.125*10<span class="math notranslate nohighlight">\(^{25}\)</span> Ar atoms. Considering that this is a fluid,
-the arrangement of atoms is not periodic either. These atoms could arrange themselves in so many ways. If we chose any ~900 atoms from this vessel,
-we would find a very large number of configurations or states. The macroscopic properties that we observe are a result of an average of these configurations.
-How does our system of ~900 atoms would predict the macroscopic properties?</p>
-<p>Of course, we can model a large number of configurations and then take an average to calculate the property of interest.
-However, a better solution is given by the ergodic hypothesis. It states that over long periods of time, all the states of
-the system are equiprobable. In other words, time average of a property is same as sampling multiple states. As you can imagine, this is
-really useful!</p>
+  <div class="section" id="ase-tutorial">
+<h1>ASE Tutorial<a class="headerlink" href="#ase-tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="neb-example">
+<h2>NEB Example<a class="headerlink" href="#neb-example" title="Permalink to this headline">¶</a></h2>
+<p>Open a Jupyter notebook interface and copy following code block</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>from ase.build import fcc100, add_adsorbate
+from ase.constraints import FixAtoms
+from ase.calculators.emt import EMT
+from ase.optimize import QuasiNewton
+from ase.io import <span class="nb">read</span>
+from ase.neb import NEB
+from ase.optimize import BFGS
+</pre></div>
 </div>
-<div class="section" id="ensembles">
-<h2>Ensembles<a class="headerlink" href="#ensembles" title="Permalink to this headline">¶</a></h2>
-<p>Our MD simulations code described earlier conserved the number of particles (N), volume (V) and total energy (E) of the system. This is referred to
-as the NVE or the microcanonical ensemble. It is often more convenient to perform simulations at constant temperature or pressure. This is achieved through
-NVT and NPT ensembles respectively. Let us consider the NVT ensemble.</p>
-<p>As the name suggests, this ensemble is used to implement isothermal conditions. In this ensemble, the simulation system is kept in contact
-with a heat bath to maintain the temperature of the system. Note that the energy of the system is allowed to change. This effect is achieved using
-thermostats. Thermostats are the algorithms that part of every standard MD code used to maintain the temperature of the system. Anderson thermostat,
-Berendsen thermostat, Nose-Hoover thermostat, and Langevin (stochastic) thermostat are some of the popular examples.</p>
-<p>If we want to maintain the temperature of the system, an easy way would be to reassign the velocities of the atoms as per the temperature. The kinetic
-energy and particle velocity distribution of a system can be determined using Boltzmann distribution for the given temperature. We can fix the velocities
-of the particles at every time step as per this distribution to keep the total kinetic energy constant. However, this is not our aim. We want the system
-to behave as if in contact with a large heat bath. The above method could result in biasing the particle dynamics which could lead to nonphysical results.
-We want the temperature of the system to be the desired temperature while allowing for local fluctuations.</p>
-<p>Let us consider the example of the Berendsen thermostat. In this method, the velocities are scaled at each time step so that the rate of
-change of temperature is proportional to the difference between the system temperature and the target temperature.</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{dT}{dt}=\frac{1}{\tau}(T_0-T)
-\]</div>
-<p>Here, <span class="math notranslate nohighlight">\(\tau\)</span> is the coupling parameter. This parameter will decide how strongly the system temperature is controlled. You would not want to control it too
-strongly or too weakly. A typical rule of thumb is to make <span class="math notranslate nohighlight">\(\tau\)</span> 100x larger than your time step. However, this specification could change based on
-your simulation. If you want to be sure, you can always try different values for <span class="math notranslate nohighlight">\(\tau\)</span> or the coupling parameters and make sure that you are not
-observing nonphysical effects. Similar effect can be achieved for pressure by using a barostat.</p>
-<p>The following figure shows a visual representation of different ensembles.</p>
-<div class="figure align-default" id="ens">
-<a class="reference internal image-reference" href="_images/Statistical_Ensembles.png"><img alt="_images/Statistical_Ensembles.png" src="_images/Statistical_Ensembles.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Visual representation of different ensembles. (source: Wikipedia)</span><a class="headerlink" href="#ens" title="Permalink to this image">¶</a></p>
+<p>Then let us load an Aluminium slab with Au atom adsorbed on top. We will then energy minimize this structure</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2x2-Al(001) surface with 3 layers and an</span>
+<span class="c1"># Au atom adsorbed in a hollow site:</span>
+<span class="nv">slab</span> <span class="o">=</span> fcc100<span class="o">(</span><span class="s1">&#39;Al&#39;</span>, <span class="nv">size</span><span class="o">=(</span><span class="m">2</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">))</span>
+add_adsorbate<span class="o">(</span>slab, <span class="s1">&#39;Au&#39;</span>, <span class="m">1</span>.7, <span class="s1">&#39;hollow&#39;</span><span class="o">)</span>
+slab.center<span class="o">(</span><span class="nv">axis</span><span class="o">=</span><span class="m">2</span>, <span class="nv">vacuum</span><span class="o">=</span><span class="m">4</span>.0<span class="o">)</span>
+
+<span class="c1"># Fix second and third layers:</span>
+<span class="nv">mask</span> <span class="o">=</span> <span class="o">[</span>atom.tag &gt; <span class="m">1</span> <span class="k">for</span> atom <span class="k">in</span> slab<span class="o">]</span>
+<span class="c1"># print(mask)</span>
+slab.set_constraint<span class="o">(</span>FixAtoms<span class="o">(</span><span class="nv">mask</span><span class="o">=</span>mask<span class="o">))</span>
+
+<span class="c1"># Use EMT potential:</span>
+slab.calc <span class="o">=</span> EMT<span class="o">()</span>
+
+<span class="c1"># Initial state:</span>
+<span class="nv">qn</span> <span class="o">=</span> QuasiNewton<span class="o">(</span>slab, <span class="nv">trajectory</span><span class="o">=</span><span class="s1">&#39;initial.traj&#39;</span><span class="o">)</span>
+qn.run<span class="o">(</span><span class="nv">fmax</span><span class="o">=</span><span class="m">0</span>.05<span class="o">)</span>
+
+<span class="c1"># Final state:</span>
+slab<span class="o">[</span>-1<span class="o">]</span>.x +<span class="o">=</span> slab.get_cell<span class="o">()[</span><span class="m">0</span>, <span class="m">0</span><span class="o">]</span> / <span class="m">2</span>
+<span class="nv">qn</span> <span class="o">=</span> QuasiNewton<span class="o">(</span>slab, <span class="nv">trajectory</span><span class="o">=</span><span class="s1">&#39;final.traj&#39;</span><span class="o">)</span>
+qn.run<span class="o">(</span><span class="nv">fmax</span><span class="o">=</span><span class="m">0</span>.05<span class="o">)</span>
+</pre></div>
 </div>
+<p>Run the following code block to run NEB calculations</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">initial</span> <span class="o">=</span> read<span class="o">(</span><span class="s1">&#39;initial.traj&#39;</span><span class="o">)</span>
+<span class="nv">final</span> <span class="o">=</span> read<span class="o">(</span><span class="s1">&#39;final.traj&#39;</span><span class="o">)</span>
+
+<span class="nv">constraint</span> <span class="o">=</span> FixAtoms<span class="o">(</span><span class="nv">mask</span><span class="o">=[</span>atom.tag &gt; <span class="m">1</span> <span class="k">for</span> atom <span class="k">in</span> initial<span class="o">])</span>
+
+<span class="nv">images</span> <span class="o">=</span> <span class="o">[</span>initial<span class="o">]</span>
+<span class="k">for</span> i <span class="k">in</span> range<span class="o">(</span><span class="m">3</span><span class="o">)</span>:
+    <span class="nv">image</span> <span class="o">=</span> initial.copy<span class="o">()</span>
+    image.calc <span class="o">=</span> EMT<span class="o">()</span>
+    image.set_constraint<span class="o">(</span>constraint<span class="o">)</span>
+    images.append<span class="o">(</span>image<span class="o">)</span>
+
+images.append<span class="o">(</span>final<span class="o">)</span>
+
+<span class="nv">neb</span> <span class="o">=</span> NEB<span class="o">(</span>images<span class="o">)</span>
+neb.interpolate<span class="o">()</span>
+<span class="nv">qn</span> <span class="o">=</span> BFGS<span class="o">(</span>neb, <span class="nv">trajectory</span><span class="o">=</span><span class="s1">&#39;neb.traj&#39;</span><span class="o">)</span>
+qn.run<span class="o">(</span><span class="nv">fmax</span><span class="o">=</span><span class="m">0</span>.05<span class="o">)</span>
+</pre></div>
 </div>
-<div class="section" id="interatomic-potentials">
-<h2>Interatomic potentials<a class="headerlink" href="#interatomic-potentials" title="Permalink to this headline">¶</a></h2>
-<p>We used the L-J potential to calculate density of an inert gas. It described the energy between a pair of particles as a function of interatomic distance.
-This description is well and good for monoatomic species or when representation of a species as hard sphere is sufficient. Realistically, a large number of
-problems involve complex molecules. These complex molecules need the description of bonds, angles and dihedrals. The complex shapes also mean that we need to consider
-rotational and vibrational motion along with translational motion. Also, physical systems involve more complex interactions. Strong interactions such as covalent, metallic
-and ionic bonding are necessary to capture the reactivity of the system. Additionally, we also need to consider weak interactions such as hydrogen bonds, permanent dipoles
-and vdWaals interactions. Including all these interactions naturally leads to a complex form of classical potential. Listed below are different bonded and non-bonded interactions
-typically considered in interatomic potentials</p>
-<div class="section" id="bond-stretch">
-<h3>Bond stretch<a class="headerlink" href="#bond-stretch" title="Permalink to this headline">¶</a></h3>
-<p>At finite temperatures, bonded atoms vibrate or chemical bond lengths deviate from their equilibrium values. These vibrations typically
-occur at certain frequencies characteristic to the different vibrational excitation levels for the bond. The vibrational excitations also
-increase the energy of the bond. After reaching sufficiently high energy (bond dissociation energy), the bond would eventually break. If
-interested in non-reactive application, the vibrational motion can be approximated sufficiently by harmonic approximation. For example, the
-energy of the HCl molecular bond can be reasonably approximated upto <span class="math notranslate nohighlight">\(E_2\)</span> or <span class="math notranslate nohighlight">\(E_3\)</span> by the following expression</p>
-<div class="math notranslate nohighlight">
-\[
-U(r_{HCl})=\frac{1}{2} k_{HCl}(r_{HCl}-r_{HCl.eq})^2
-\]</div>
-<p>As <span class="math notranslate nohighlight">\(r_{HCl}\rightarrow\infty\)</span>,<span class="math notranslate nohighlight">\(U(r_{HCl})\rightarrow\infty\)</span>. Hence, this expression will not be able to express the breaking of the bond though.
-A better approximation is represented by Morse potential defined below. A lot of the non-reactive force fields still use either harmonic approximation
-or it’s modified form by including quadratic term in the equation above. The reason for this is the higher computational cost of calculating exponential.</p>
-<div class="math notranslate nohighlight">
-\[
-U(r_{HCl})=D_{HCl}[1-e^{-\alpha_{HCl}(r_{HCl}-r_{HCl.eq})}]^2
-\]</div>
-<div class="figure align-default" id="id1">
-<a class="reference internal image-reference" href="_images/Anharmonic_oscillator.gif"><img alt="_images/Anharmonic_oscillator.gif" src="_images/Anharmonic_oscillator.gif" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Molecular vibration of HCl. (source: Wikipedia)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<p>Similar to bond stretch, we also need to consider angle, dihedrals as well as non-bonded interactions like</p>
+<p>To visualize the geometry, open a virtual machine on Adroit visualization node. Change the directory to your home directory.
+Execute the following command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>/opt/export/course/mae539/anaconda3/envs/myenv/bin/ase gui neb.traj@-5:
+</pre></div>
 </div>
 </div>
 </div>
@@ -642,17 +548,17 @@ U(r_{HCl})=D_{HCl}[1-e^{-\alpha_{HCl}(r_{HCl}-r_{HCl.eq})}]^2
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="lecture1.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="lammps.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lecture 1</p>
+            <p class="prev-next-title">LAMMPS Tutorials</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="lecture3.html" title="next page">
+    <a class='right-next' id="next-link" href="min.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 3</p>
+        <p class="prev-next-title">Example geometries</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

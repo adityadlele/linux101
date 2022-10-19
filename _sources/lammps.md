@@ -1,4 +1,4 @@
-# LAMMPS Tutorial 1
+# LAMMPS Tutorials
 
 
 ### Typical input files required (The names can be changed)
