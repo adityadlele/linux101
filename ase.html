@@ -419,6 +419,11 @@ title="Print to PDF"
    NEB Example
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#l-j-parameter-fitting">
+   L-J parameter fitting
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -441,6 +446,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#neb-example">
    NEB Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#l-j-parameter-fitting">
+   L-J parameter fitting
   </a>
  </li>
 </ul>
@@ -516,6 +526,71 @@ qn.run<span class="o">(</span><span class="nv">fmax</span><span class="o">=</spa
 <p>To visualize the geometry, open a virtual machine on Adroit visualization node. Change the directory to your home directory.
 Execute the following command</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>/opt/export/course/mae539/anaconda3/envs/myenv/bin/ase gui neb.traj@-5:
+</pre></div>
+</div>
+</div>
+<div class="section" id="l-j-parameter-fitting">
+<h2>L-J parameter fitting<a class="headerlink" href="#l-j-parameter-fitting" title="Permalink to this headline">¶</a></h2>
+<p>Use the following codeblocks in a Jupyter notebook to run parameter fitting example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import numpy as np
+
+<span class="nv">r</span> <span class="o">=</span> np.arange<span class="o">(</span><span class="m">3</span>.5, <span class="m">7</span>., <span class="m">0</span>.5<span class="o">)</span>
+<span class="nv">energy</span> <span class="o">=</span> np.array<span class="o">([</span><span class="m">0</span>.1374, -0.0195, -0.0218, 
+                   -0.0133, -0.0076, -0.0043, 
+                   -0.0025<span class="o">])</span>
+<span class="nv">energy_err</span> <span class="o">=</span> energy * <span class="m">0</span>.1
+
+plt.errorbar<span class="o">(</span>r, energy, <span class="nv">yerr</span><span class="o">=</span>energy_err, 
+             <span class="nv">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span>, <span class="nv">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="o">)</span>
+plt.xlabel<span class="o">(</span>r<span class="s1">&#39;$r$/Å&#39;</span><span class="o">)</span>
+plt.ylabel<span class="o">(</span>r<span class="s1">&#39;$E$/eV&#39;</span><span class="o">)</span>
+plt.show<span class="o">()</span>
+</pre></div>
+</div>
+<p>Then</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>from scipy.optimize import curve_fit
+
+def lj_energy<span class="o">(</span>r, epsilon, sigma<span class="o">)</span>:
+    <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    Implementation of the Lennard-Jones potential </span>
+<span class="s2">    to calculate the energy of the interaction.</span>
+<span class="s2">    </span>
+<span class="s2">    Parameters</span>
+<span class="s2">    ----------</span>
+<span class="s2">    r: float</span>
+<span class="s2">        Distance between two particles (Å)</span>
+<span class="s2">    epsilon: float </span>
+<span class="s2">        Potential energy at the equilibrium bond </span>
+<span class="s2">        length (eV)</span>
+<span class="s2">    sigma: float </span>
+<span class="s2">        Distance at which the potential energy is </span>
+<span class="s2">        zero (Å)</span>
+<span class="s2">    </span>
+<span class="s2">    Returns</span>
+<span class="s2">    -------</span>
+<span class="s2">    float</span>
+<span class="s2">        Energy of the van der Waals interaction (eV)</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="m">4</span> * epsilon * np.power<span class="o">(</span>
+        sigma / r, <span class="m">12</span><span class="o">)</span> - <span class="m">4</span> * epsilon * np.power<span class="o">(</span>
+        sigma / r, <span class="m">6</span><span class="o">)</span>
+
+popt, <span class="nv">pcov</span> <span class="o">=</span> curve_fit<span class="o">(</span>lj_energy, r, energy, 
+                       <span class="nv">sigma</span><span class="o">=</span>energy_err<span class="o">)</span>
+print<span class="o">(</span><span class="s1">&#39;Best value for ε = {:.2e} eV&#39;</span>.format<span class="o">(</span>
+    popt<span class="o">[</span><span class="m">0</span><span class="o">]))</span>
+print<span class="o">(</span><span class="s1">&#39;Best value for σ = {:.2f} Å&#39;</span>.format<span class="o">(</span>
+    popt<span class="o">[</span><span class="m">1</span><span class="o">]))</span>
+</pre></div>
+</div>
+<p>And finally, to plot the fitted parameters against the intial data</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>plt.errorbar<span class="o">(</span>r, energy, <span class="nv">yerr</span><span class="o">=</span>energy_err, <span class="nv">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span>, <span class="nv">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="o">)</span>
+<span class="nv">x</span> <span class="o">=</span> np.linspace<span class="o">(</span><span class="m">3</span>.5, <span class="m">7</span>, <span class="m">1000</span><span class="o">)</span>
+plt.plot<span class="o">(</span>x, lj_energy<span class="o">(</span>x, popt<span class="o">[</span><span class="m">0</span><span class="o">]</span>, popt<span class="o">[</span><span class="m">1</span><span class="o">]))</span>
+plt.xlabel<span class="o">(</span>r<span class="s1">&#39;$r$/Å&#39;</span><span class="o">)</span>
+plt.ylabel<span class="o">(</span>r<span class="s1">&#39;$E$/eV&#39;</span><span class="o">)</span>
+plt.show<span class="o">()</span>
 </pre></div>
 </div>
 </div>

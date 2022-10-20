@@ -71,3 +71,73 @@ Execute the following command
 ```sh
 /opt/export/course/mae539/anaconda3/envs/myenv/bin/ase gui neb.traj@-5:
 ```
+
+### L-J parameter fitting
+
+Use the following codeblocks in a Jupyter notebook to run parameter fitting example.
+
+```sh
+import matplotlib.pyplot as plt
+import numpy as np
+
+r = np.arange(3.5, 7., 0.5)
+energy = np.array([0.1374, -0.0195, -0.0218, 
+                   -0.0133, -0.0076, -0.0043, 
+                   -0.0025])
+energy_err = energy * 0.1
+
+plt.errorbar(r, energy, yerr=energy_err, 
+             marker='o', ls='')
+plt.xlabel(r'$r$/Å')
+plt.ylabel(r'$E$/eV')
+plt.show()
+```
+
+Then
+
+```sh
+from scipy.optimize import curve_fit
+
+def lj_energy(r, epsilon, sigma):
+    """
+    Implementation of the Lennard-Jones potential 
+    to calculate the energy of the interaction.
+    
+    Parameters
+    ----------
+    r: float
+        Distance between two particles (Å)
+    epsilon: float 
+        Potential energy at the equilibrium bond 
+        length (eV)
+    sigma: float 
+        Distance at which the potential energy is 
+        zero (Å)
+    
+    Returns
+    -------
+    float
+        Energy of the van der Waals interaction (eV)
+    """
+    return 4 * epsilon * np.power(
+        sigma / r, 12) - 4 * epsilon * np.power(
+        sigma / r, 6)
+
+popt, pcov = curve_fit(lj_energy, r, energy, 
+                       sigma=energy_err)
+print('Best value for ε = {:.2e} eV'.format(
+    popt[0]))
+print('Best value for σ = {:.2f} Å'.format(
+    popt[1]))
+```
+
+And finally, to plot the fitted parameters against the intial data
+
+```sh
+plt.errorbar(r, energy, yerr=energy_err, marker='o', ls='')
+x = np.linspace(3.5, 7, 1000)
+plt.plot(x, lj_energy(x, popt[0], popt[1]))
+plt.xlabel(r'$r$/Å')
+plt.ylabel(r'$E$/eV')
+plt.show()
+```
